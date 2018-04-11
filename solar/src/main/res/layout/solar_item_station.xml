@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_station"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_solar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/img_station"/>
+
+        <TextView
+            android:id="@+id/tv_station_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="marquee"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            tools:text="北京双杰光伏发电站"
+            android:textColor="@color/primary_text_black"
+            android:textSize="@dimen/ts_lel_two"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/iv_solar"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toRightOf="@id/iv_solar"
+            app:layout_constraintTop_toBottomOf="@id/tv_station_name"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/tv_station_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:maxLines="2"
+                tools:text="地址：北京怀柔雁栖经济开发区双杰电气"
+                android:textColor="@color/secondary_text_black"
+                android:textSize="@dimen/ts_lel_three"/>
+
+            <TextView
+                android:id="@+id/tv_station_power"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                tools:text="装机容量：50kW"
+                android:textColor="@color/secondary_text_black"
+                android:textSize="@dimen/ts_lel_three"/>
+
+            <TextView
+                android:id="@+id/tv_total_energy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                tools:text="累计发电量：132400kWh"
+                android:textColor="@color/secondary_text_black"
+                android:textSize="@dimen/ts_lel_three"/>
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/ll_add"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+        <View
+            style="@style/Horizontal_Line"/>
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="添加"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/ts_lel_two"/>
+        <View
+            style="@style/Horizontal_Line"/>
+    </LinearLayout>
+</LinearLayout>

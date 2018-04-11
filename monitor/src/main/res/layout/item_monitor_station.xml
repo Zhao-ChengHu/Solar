@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+    <RelativeLayout
+        android:id="@+id/rl_station"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_monitor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/ic_monitor"/>
+
+        <TextView
+            android:id="@+id/tv_station_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="marquee"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="北京双杰能耗监控站"
+            android:textColor="@color/primary_text_black"
+            android:textSize="@dimen/ts_lel_two"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/iv_monitor"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/iv_monitor"
+            android:layout_below="@id/tv_station_name">
+
+            <TextView
+                android:id="@+id/tv_station_address"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:maxLines="2"
+                android:text="地址：北京双杰电气"
+                android:textColor="@color/secondary_text_black"
+                android:textSize="@dimen/ts_lel_three"/>
+
+            <TextView
+                android:id="@+id/tv_station_power"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="装机容量：30000kW"
+                android:textColor="@color/secondary_text_black"
+                android:textSize="@dimen/ts_lel_three"/>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/ll_add"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+        <View
+            style="@style/Horizontal_Line"/>
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="添加"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/ts_lel_two"/>
+        <View
+            style="@style/Horizontal_Line"/>
+    </LinearLayout>
+</LinearLayout>

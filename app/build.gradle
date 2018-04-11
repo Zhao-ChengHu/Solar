@@ -1,0 +1,112 @@
+apply plugin: 'com.android.application'
+apply from: '../buildTools/util.gradle'
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+    defaultConfig {
+        applicationId "com.sojoline.energy"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.4.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //ARouter需要
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
+
+        //分包
+        multiDexEnabled true
+    }
+
+    //解决 task ':app:prepareDebugAndroidTestDependencies'报错
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
+        resolutionStrategy.force 'com.android.support:multidex:1.0.2'
+    }
+
+    signingConfigs {
+
+        sojoEnergy {
+            storeFile file(RELEASE_KEY_PAHT)
+            storePassword RELEASE_KEY_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_STORE_PASSWORD
+        }
+
+        debug {
+            storeFile file("../debug.keystore")
+        }
+    }
+
+    buildTypes {
+        renameReleaseApk(applicationVariants)
+        defaultConfig.versionCode VERSION_CODE_DATE * 100 + VERSION_CODE_TIME
+
+        debug {
+            debuggable true
+            signingConfig signingConfigs.sojoEnergy
+        }
+        release {
+            debuggable false
+            signingConfig signingConfigs.sojoEnergy
+
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        sojo {
+
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile deps.supportAppcompatv7
+    compile deps.constraint
+    testCompile deps.junit
+    // butterknift compiler
+    annotationProcessor deps.butterknifeCompiler
+    // AROUTER 阿里路由 compiler
+    annotationProcessor deps.arouterCompiler
+    // permissions4m compiler
+    annotationProcessor 'com.github.jokermonn:permissions4m:2.1.2-processor'
+    // 分包
+    compile 'com.android.support:multidex:1.0.3'
+    compile project(':solar')
+    compile project(':monitor')
+}
+
+//compileBuild {
+//    applicationName = 'com.sojoline.energy.BaseApplication'
+//    isRegisterComponentAuto = true
+//}
+
+def count = 0
+project.afterEvaluate {
+    getTasks().findAll {
+        task ->
+            if (task.name.contains("assemble") && task.name.contains("Release")) {
+                task.doFirst {
+                    if (count == 0) {
+                        refreshVersionCode(true)
+                        count += 1
+                    }
+                }
+                task.doLast {
+                    def srcFile = "build/outputs/apk"
+                    def destFile = "../APK"
+                    copyFile(srcFile, destFile)
+                }
+            }
+    }
+}

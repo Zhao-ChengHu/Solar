@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PowerCapacityView">
+        <attr name="circleColor" format="color"></attr>
+        <attr name="arcColor" format="color"></attr>
+        <attr name="textColor" format="color"></attr>
+        <attr name="smallTextSize" format="dimension"></attr>
+        <attr name="bigTextSize" format="dimension"></attr>
+        <attr name="textSpace" format="dimension"></attr>
+        <attr name="lineColor" format="color"></attr>
+        <attr name="lineCount" format="integer"></attr>
+        <attr name="lineLength" format="dimension"></attr>
+        <attr name="lineOffset" format="dimension"></attr>
+    </declare-styleable>
+</resources>

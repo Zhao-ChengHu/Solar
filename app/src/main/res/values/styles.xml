@@ -1,0 +1,21 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--</style>-->
+
+    <style name="TextView_User">
+        <item name="android:gravity">right</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/primary_text_black</item>
+        <item name="android:textSize">@dimen/ts_lel_three</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:drawableRight">@mipmap/ic_right</item>
+        <item name="android:drawablePadding">10dp</item>
+    </style>
+</resources>

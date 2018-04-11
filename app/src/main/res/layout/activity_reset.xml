@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <include layout="@layout/common_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:orientation="horizontal">
+            <TextView
+                style="@style/General_Type_One"
+                android:text="@string/oldPsd"/>
+            <EditText
+                android:id="@+id/et_psd_old"
+                style="@style/EditText_Input"
+                android:layout_weight="12"
+                android:hint="@string/hint_psd"
+                android:inputType="textPassword"
+                android:maxLength="16"/>
+        </LinearLayout>
+
+        <View
+            style="@style/Horizontal_Line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:orientation="horizontal">
+            <TextView
+                style="@style/General_Type_One"
+                android:text="@string/newPsd4"/>
+            <EditText
+                android:id="@+id/et_psd_new"
+                style="@style/EditText_Input"
+                android:layout_weight="12"
+                android:hint="@string/hint_psd"
+                android:inputType="textPassword"
+                android:maxLength="16"/>
+        </LinearLayout>
+
+        <View
+            style="@style/Horizontal_Line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:orientation="horizontal">
+            <TextView
+                style="@style/General_Type_One"
+                android:text="@string/psd_again"/>
+            <EditText
+                android:id="@+id/et_psd_again"
+                style="@style/EditText_Input"
+                android:layout_weight="12"
+                android:hint="@string/hint_psd"
+                android:inputType="textPassword"
+                android:maxLength="16"/>
+        </LinearLayout>
+
+        <View
+            style="@style/Horizontal_Line"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:text="@string/psd_prompt"
+            android:textColor="@color/colorAccent"/>
+
+        <Button
+            android:id="@+id/bt_change"
+            style="@style/Button_Red"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:text="@string/confirm_change"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</LinearLayout>

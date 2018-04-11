@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin_sub">8dp</dimen>
+    <dimen name="btn_radius">3dp</dimen>
+
+    <dimen name="ts_lel_one">20sp</dimen>
+    <dimen name="ts_lel_two">18sp</dimen>
+    <dimen name="ts_lel_three">16sp</dimen>
+    <dimen name="ts_lel_four">14sp</dimen>
+    <dimen name="ts_lel_five">12sp</dimen>
+</resources>

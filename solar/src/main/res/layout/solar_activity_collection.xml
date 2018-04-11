@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.CollectionActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:navigationIcon="@mipmap/ic_back"
+        style="@style/Toolbar.MyStyle"
+        app:title="123"
+        app:titleTextColor="@color/white"
+        app:titleTextAppearance="@style/Toolbar.Title">
+        <ImageView
+            android:id="@+id/iv_add"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_gravity="right"
+            android:minWidth="50dp"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/ic_add"/>
+    </android.support.v7.widget.Toolbar>
+    <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        tools:listitem="@layout/solar_item_station"
+        android:visibility="visible">
+
+    </com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView>
+    <LinearLayout
+        android:id="@+id/ll_none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="您还没有关注的光伏电站"
+            android:textSize="@dimen/ts_lel_two"/>
+        <Button
+            android:id="@+id/bt_add"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="添加电站"
+            android:textSize="@dimen/ts_lel_two"
+            android:background="@drawable/btn_red_stroke"/>
+    </LinearLayout>
+
+</LinearLayout>

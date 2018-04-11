@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">base</string>
+    <string name="press_again_exit">再按一次退出</string>
+    <string name="network_not_available">网络异常</string>
+    <string name="unknown">--</string>
+    <string name="transition_search">transition_search</string>
+    <string name="cancel">取消</string>
+</resources>

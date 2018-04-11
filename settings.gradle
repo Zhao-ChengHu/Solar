@@ -1,0 +1,1 @@
+include ':app', ':base', ':solar', ':fragmentation', ':model', ':presenter', ':compiler', ':ioc_annotation', ':basiclib', ':monitor'

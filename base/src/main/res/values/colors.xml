@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ed3b5d</color>
+    <color name="colorPrimaryDark">#ff3b5d</color>
+    <color name="colorAccent">#ed3b5d</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="red">#ff0000</color>
+
+    <color name="btn_focused">#DE3455</color>
+    <color name="btn_unable">#7FED3B5D</color>
+    <!-- Black 87% -->
+    <color name="primary_text_black">#de000000</color>
+    <!-- Black 54% -->
+    <color name="secondary_text_black">#8a000000</color>
+
+    <!-- White 87% -->
+    <color name="primary_text_white">#deffffff</color>
+    <!-- White 38% -->
+    <color name="secondary_text_white">#61ffffff</color>
+    <!--底部导航未选中颜色值-->
+    <color name="tab_unselected">#c9c9c9</color>
+    <!--全局背景色-->
+    <!--<color name="background">#dadada</color>-->
+    <color name="background">#F1F0F6</color>
+    <!--分割线颜色-->
+    <color name="divider">#E1E2E4</color>
+    <!--底部导航未选中颜色值-->
+    <color name="nav_unselected">#999999</color>
+
+    <color name="soft_blue">#2C97DE</color>
+    <color name="tab_normal">#999999</color>
+</resources>

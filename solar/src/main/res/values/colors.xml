@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="device_run">#00cc99</color>
+    <color name="device_warning">#ff0033</color>
+    <color name="device_offline">#D3D3D3</color>
+</resources>

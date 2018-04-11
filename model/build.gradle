@@ -1,0 +1,61 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    greendao {
+        schemaVersion 1
+        daoPackage 'com.sojoline.model.db.gen'
+        targetGenDir 'src/main/java'
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile deps.junit
+    //dagger
+    compile deps.dagger
+    annotationProcessor deps.daggerCompiler
+    //日志
+    compile deps.logging
+    // retrofit
+    compile deps.retrofit
+    //
+    compile deps.adapterRxjava
+    //
+    compile deps.converterGson
+    //okhttp
+    compile deps.okhttp
+    //
+    compile deps.stetho
+    //greendao
+    compile deps.greendao
+    compile "net.zetetic:android-database-sqlcipher:3.5.2"
+
+    annotationProcessor project(':compiler')
+    compile project(':ioc_annotation')
+    compile project(':basiclib')
+}

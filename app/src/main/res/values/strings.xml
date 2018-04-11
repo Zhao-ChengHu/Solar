@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">智慧能源</string>
+    <string name="phoneNum">手机号</string>
+    <string name="phoneNum4">手&#8194;机&#8194;号</string>
+    <string name="input_phoneNum">输入手机号</string>
+    <string name="psd">密码</string>
+    <string name="psd4">密&#12288;&#12288;码</string>
+    <string name="input_psd">输入密码</string>
+    <string name="forgot_psd">忘记密码</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="code">验证码</string>
+    <string name="code4">验&#8194;证&#8194;码</string>
+    <string name="hint_code">输入验证码</string>
+    <string name="send_code">发送验证码</string>
+    <string name="hint_psd">输入密码</string>
+    <string name="psd_again">确认密码</string>
+    <string name="psd_prompt">*密码必须是字母和数字组合，最少6位</string>
+    <string name="newPsd">新密码</string>
+    <string name="newPsd4">新&#8194;密&#8194;码</string>
+    <string name="confirm_change">确认修改</string>
+    <string name="user_exit">退出登录</string>
+    <string name="modify">修改</string>
+    <string name="submit">提交</string>
+    <string name="limit_200">还可以输入200字</string>
+    <string name="app_introduce">新能源APP是一款包含光伏、售电和能耗监控的智能软件</string>
+    <string name="about">关于</string>
+    <string name="suggest">意见反馈</string>
+    <string name="contact_service">联系客服</string>
+    <string name="update_app">检查更新</string>
+    <string name="modify_psd">修改密码</string>
+    <string name="clean_cache">清除缓存</string>
+    <string name="oldPsd">旧&#8194;密&#8194;码</string>
+    <string name="hint_nick">输入昵称</string>
+</resources>

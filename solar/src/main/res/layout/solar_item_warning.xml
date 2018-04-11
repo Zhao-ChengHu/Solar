@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tv_batch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="逆变器：210711234567"
+        android:textColor="@color/primary_text_black"
+        android:textSize="@dimen/ts_lel_two"/>
+
+    <TextView
+        android:id="@+id/tv_warning_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        tools:text="报警信息：直流过压"
+        android:textSize="@dimen/ts_lel_three"
+        android:textColor="@color/secondary_text_black"
+        app:layout_constraintTop_toBottomOf="@id/tv_batch"/>
+
+    <TextView
+        android:id="@+id/tv_warning_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        tools:text="报警时间：2017-11-11"
+        android:textSize="@dimen/ts_lel_three"
+        android:textColor="@color/secondary_text_black"
+        app:layout_constraintTop_toBottomOf="@id/tv_warning_info"/>
+    <TextView
+        android:id="@+id/tv_repair_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        tools:text="修复信息：未修复"
+        android:textSize="@dimen/ts_lel_three"
+        android:textColor="@color/secondary_text_black"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tv_warning_date"/>
+    <TextView
+        android:id="@+id/tv_repair_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        tools:text="修复时间：--"
+        android:textSize="@dimen/ts_lel_three"
+        android:textColor="@color/secondary_text_black"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tv_repair_info"/>
+</android.support.constraint.ConstraintLayout>

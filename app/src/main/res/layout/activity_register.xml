@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <include layout="@layout/common_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:minHeight="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/General_Type_One"
+            android:text="@string/phoneNum4"/>
+
+        <EditText
+            android:id="@+id/et_phone"
+            style="@style/EditText_Input"
+            android:layout_weight="10"
+            android:hint="@string/input_phoneNum"
+            android:inputType="phone"
+            android:maxLength="11"/>
+    </LinearLayout>
+
+    <ImageView
+        style="@style/Horizontal_Line"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:minHeight="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/General_Type_One"
+            android:text="@string/code4"/>
+        <EditText
+            android:id="@+id/et_code"
+            style="@style/EditText_Input"
+            android:layout_weight="6"
+            android:paddingLeft="9dp"
+            android:inputType="number"
+            android:hint="@string/hint_code"
+            android:maxLength="6"/>
+
+        <Button
+            android:id="@+id/bt_sendCode"
+            style="@style/Button_Send_Code"
+            android:layout_weight="14"
+            android:text="@string/send_code"/>
+    </LinearLayout>
+
+    <ImageView
+        style="@style/Horizontal_Line"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:minHeight="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/General_Type_One"
+            android:text="@string/psd4"/>
+        <EditText
+            android:id="@+id/et_psd"
+            style="@style/EditText_Input"
+            android:layout_weight="10"
+            android:hint="@string/hint_psd"
+            android:inputType="textPassword"
+            android:maxLength="16"
+            />
+    </LinearLayout>
+
+    <View
+        style="@style/Horizontal_Line"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:minHeight="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/General_Type_One"
+            android:text="@string/psd_again"/>
+        <EditText
+            android:id="@+id/et_again"
+            style="@style/EditText_Input"
+            android:layout_weight="10"
+            android:hint="@string/hint_psd"
+            android:inputType="textPassword"
+            android:maxLength="16"/>
+    </LinearLayout>
+
+    <View
+        style="@style/Horizontal_Line"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:text="@string/psd_prompt"
+        android:textColor="@color/colorAccent"/>
+
+    <Button
+        android:id="@+id/bt_register"
+        style="@style/Button_Red"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_red_selector"
+        android:text="@string/register"
+        android:textColor="@color/white"/>
+
+</LinearLayout>

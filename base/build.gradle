@@ -1,0 +1,88 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //ARouter需要
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile deps.supportAppcompatv7
+    compile deps.supportDesign
+    compile deps.constraint
+    testCompile deps.junit
+
+    compile deps.nineoldandroids
+
+    //butterknife
+    compile deps.butterknife
+    annotationProcessor deps.butterknifeCompiler
+
+    // AROUTER 阿里路由
+    annotationProcessor deps.arouterCompiler
+    compile deps.arouter
+
+    // bottom navigation bar
+    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+
+    // 内存泄露检测工具
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:' + rootProject.leakcanaryVersion
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:' + rootProject.leakcanaryVersion
+
+    // MPAndroidChart图表
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+
+    // dialog
+    compile 'com.flyco.dialog:FlycoDialog_Lib:1.3.2@aar'
+
+    // 权限管理 permissions4m
+    compile 'com.github.jokermonn:permissions4m:2.1.2-lib'
+
+    //images picker
+    compile 'com.jaikydota.imagespickers:imagespickers:1.0.6'
+
+    // glide
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
+
+    // glide-transformations
+    compile 'jp.wasabeef:glide-transformations:3.0.1'
+
+    compile 'com.yanzhenjie:recyclerview-swipe:1.1.3'
+
+    //app升级
+    compile 'com.qianwen:update-app:3.3.8'
+    compile 'com.lzy.net:okgo:3.0.4'
+
+    compile project(':fragmentation')
+    compile project(':model')
+    compile project(':presenter')
+}

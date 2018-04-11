@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextView_Right_Bar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:drawableRight">@mipmap/ic_right</item>
+        <item name="android:textSize">@dimen/ts_lel_two</item>
+        <item name="android:textColor">@color/primary_text_black</item>
+    </style>
+
+    <style name="TextView_Device_Code">
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/ts_lel_three</item>
+        <item name="android:textColor">@color/primary_text_black</item>
+    </style>
+
+    <style name="LinearLayout_Device_Content">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <!--设备运行状态-->
+    <style name="TextView_Device_State">
+        <item name="android:drawableLeft">@drawable/device_state_run</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/ts_lel_three</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/secondary_text_black</item>
+    </style>
+
+    <style name="Filter_TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/ts_lel_two</item>
+        <item name="android:textColor">@color/secondary_text_black</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minWidth">60dp</item>
+        <item name="android:minHeight">35dp</item>
+    </style>
+</resources>
