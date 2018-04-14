@@ -1,7 +1,10 @@
 package com.sojoline.solar.view.activity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -26,7 +29,26 @@ import com.trello.rxlifecycle.ActivityEvent;
  */
 @Route(path = "/solar/login/main")
 public class SolarMainActivity extends BaseCompatActivity{
+	//sd卡读写权限
+	private static final int REQUEST_EXTERNAL_STORAGE = 1;
+	private static String[] PERMISSIONS_STORAGE = {
+			"android.permission.READ_EXTERNAL_STORAGE",
+			"android.permission.WRITE_EXTERNAL_STORAGE" };
 
+	public static void verifyStoragePermissions(Activity activity) {
+
+		try {
+			//检测是否有写的权限
+			int permission = ActivityCompat.checkSelfPermission(activity,
+					"android.permission.WRITE_EXTERNAL_STORAGE");
+			if (permission != PackageManager.PERMISSION_GRANTED) {
+				// 没有写的权限，去申请写的权限，会弹出对话框
+				ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE,REQUEST_EXTERNAL_STORAGE);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public static void navigation(){
 		ARouter.getInstance().build("/solar/login/main")
 				.navigation();
@@ -37,6 +59,7 @@ public class SolarMainActivity extends BaseCompatActivity{
 		setContentView(R.layout.solar_activity_main);
 		if (savedInstanceState == null) {
 			loadRootFragment(R.id.fragment_container, SolarMainFragment.newInstance());
+			verifyStoragePermissions(SolarMainActivity.this);
 			PgyCrashManager.register(this);
 			PgyUpdateManager.setIsForced(true);
 			PgyUpdateManager.register(this);

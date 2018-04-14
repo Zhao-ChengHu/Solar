@@ -30,6 +30,7 @@ allprojects {
         }
     }
 }
+//蒲公英更新
 allprojects {
     repositories {
         jcenter()
