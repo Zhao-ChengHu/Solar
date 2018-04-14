@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.pgyersdk.crash.PgyCrashManager;
+import com.pgyersdk.update.PgyUpdateManager;
 import com.sojoline.base.util.AppUtils;
 import com.sojoline.base.view.BaseCompatActivity;
 import com.sojoline.basiclib.event.UnauthorizedEvent;
@@ -35,13 +37,17 @@ public class SolarMainActivity extends BaseCompatActivity{
 		setContentView(R.layout.solar_activity_main);
 		if (savedInstanceState == null) {
 			loadRootFragment(R.id.fragment_container, SolarMainFragment.newInstance());
+			PgyCrashManager.register(this);
+			PgyUpdateManager.setIsForced(true);
+			PgyUpdateManager.register(this);
+
 		}
 	}
 
 	@Override
 	protected void initView(Bundle savedInstanceState) {
 		super.initView(savedInstanceState);
-		AppUtils.appUpdate(this);
+		//AppUtils.appUpdate(this);
 		RxBus.getInstance().toObservable(UnauthorizedEvent.class)
 				.compose(this.<UnauthorizedEvent>bindUntilEvent(ActivityEvent.DESTROY))
 				.subscribe(new SimpleSubscriber<UnauthorizedEvent>() {
