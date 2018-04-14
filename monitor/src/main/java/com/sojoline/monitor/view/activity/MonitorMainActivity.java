@@ -32,6 +32,6 @@ public class MonitorMainActivity extends BaseCompatActivity {
 	@Override
 	protected void initView(Bundle savedInstanceState) {
 		super.initView(savedInstanceState);
-		AppUtils.appUpdate(this);
+		//AppUtils.appUpdate(this);
 	}
 }

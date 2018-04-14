@@ -93,7 +93,7 @@ public class AppUtils {
 		AppInfoPreferences.get().setUser(null);
 	}
 
-	public static void appUpdate(final Activity activity){
+	/*public static void appUpdate(final Activity activity){
 		String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download/sojo";
 		Map<String, String> params = new HashMap<>();
 		params.put("appType", "pv");
@@ -153,5 +153,5 @@ public class AppUtils {
 						DebugLog.log("app no update");
 					}
 				});
-	}
+	}*/
 }
