@@ -59,6 +59,16 @@ public class DeviceFilterDialog extends BaseDialog<DeviceFilterDialog> implement
 		widthScale(0.85f);
 		View view = View.inflate(mContext, R.layout.solar_dialog_filter, null);
 		timeLayout = (LinearLayout) view.findViewById(R.id.ll_time_select);
+
+		Calendar startDate = Calendar.getInstance();
+		Calendar endDate = Calendar.getInstance();
+		try {
+			startDate.setTime(simpleDateFormat.parse("2017-01-01"));
+			Date date = new Date(System.currentTimeMillis());
+			String format = simpleDateFormat.format(date);
+			endDate.setTime(simpleDateFormat.parse(format));
+		} catch (ParseException e) {
+		}
 		//时间选择器
 		pvTime = new TimePickerBuilder(getContext(), new OnTimeSelectListener() {
 			@Override
@@ -81,6 +91,7 @@ public class DeviceFilterDialog extends BaseDialog<DeviceFilterDialog> implement
 			.setSubmitColor(getContext().getResources().getColor(R.color.btn_focused))
 			.setTextColorCenter(getContext().getResources().getColor(R.color.btn_focused))
 			.setDecorView(timeLayout)
+			.setRangDate(startDate,endDate)
 			.build();
 		pvTime.setOnDismissListener(new com.bigkoo.pickerview.listener.OnDismissListener() {
 			@Override
