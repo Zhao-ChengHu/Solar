@@ -25,7 +25,10 @@ import com.sojoline.solar.R2;
 import com.sojoline.solar.adapter.WarningListAdapter;
 import com.sojoline.solar.widget.DeviceFilterDialog;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -55,7 +58,8 @@ public class WarningListActivity extends BaseCompatActivity implements SolarWarn
 	private boolean isLoadMore;
 	private WarningResponse.Content content;
 	private List<WarningInfo> list;
-
+	private HashMap<String,String> timeMap;
+	private SimpleDateFormat dateFormat;
 	public static void navigation(){
 		ARouter.getInstance().build("/solar/login/warning_list").navigation();
 	}
@@ -80,12 +84,21 @@ public class WarningListActivity extends BaseCompatActivity implements SolarWarn
 		isLoadMore = false;
 		list = new ArrayList<>();
 		String id = AppInfoPreferences.get().getStationId();
+		timeMap = new HashMap<>();
 		map = new HashMap<>();
 		map.put("DPStationID", id);
 		currentPage = 1;
 		map.put("page", currentPage);
 		map.put("prePage", 20);
 		map.put("warningType", "All");
+
+		timeMap.put("startTime","2017-01-01");
+		dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date(System.currentTimeMillis());
+		String format = dateFormat.format(date);
+		timeMap.put("endTime",format);
+
+		map.putAll(timeMap);
 		//发起请求
 		presenter.getWarningList(map);
 
@@ -102,12 +115,13 @@ public class WarningListActivity extends BaseCompatActivity implements SolarWarn
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.action_filter){
-			final DeviceFilterDialog dialog = new DeviceFilterDialog(WarningListActivity.this, deviceType, warningType);
+			final DeviceFilterDialog dialog = new DeviceFilterDialog(WarningListActivity.this, deviceType, warningType, timeMap);
 			dialog.setOnFilterTypeChangedListener(new DeviceFilterDialog.OnFilterTypeChangedListener() {
 				@Override
-				public void filterTypeChanged(DeviceType deviceType, WarningType warningType) {
+				public void filterTypeChanged(DeviceType deviceType, WarningType warningType, HashMap<String,String> timeMap) {
 					WarningListActivity.this.deviceType = deviceType;
 					WarningListActivity.this.warningType = warningType;
+					WarningListActivity.this.timeMap = timeMap;
 					if (deviceType == DeviceType.COMBINER){
 						map.put("DeviceType", "com");
 						DebugLog.log("com");
@@ -136,6 +150,9 @@ public class WarningListActivity extends BaseCompatActivity implements SolarWarn
 					//这里需要把page改成1
 					currentPage = 1;
 					map.put("page", currentPage);
+
+					map.putAll(timeMap);
+
 					//发起请求
 					presenter.getWarningList(map);
 				}
@@ -204,7 +221,7 @@ public class WarningListActivity extends BaseCompatActivity implements SolarWarn
 		isLoadMore = false;
 		this.content = content;
 		if (content != null){
-			list.addAll(content.getList());
+			setDataList(content.getList());
 			if (adapter == null) {
 				adapter = new WarningListAdapter();
 				adapter.setData(list);
@@ -221,5 +238,20 @@ public class WarningListActivity extends BaseCompatActivity implements SolarWarn
 			}
 		}
 
+	}
+
+	private void setDataList(List<WarningInfo> data) {
+		try {
+			Date startDate = dateFormat.parse(timeMap.get("startTime"));
+			Date endDate = dateFormat.parse(timeMap.get("endTime"));
+			for (WarningInfo warningInfo:data) {
+
+					Date date = dateFormat.parse(warningInfo.getFailureTime());
+					if(startDate.getTime() <= date.getTime() && date.getTime()<= endDate.getTime()){
+						list.add(warningInfo);
+					}
+			}
+		} catch (ParseException e) {
+		}
 	}
 }
