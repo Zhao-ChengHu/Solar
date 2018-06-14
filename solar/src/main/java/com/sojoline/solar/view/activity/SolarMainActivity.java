@@ -30,12 +30,12 @@ import com.trello.rxlifecycle.ActivityEvent;
 @Route(path = "/solar/login/main")
 public class SolarMainActivity extends BaseCompatActivity{
 	//sd卡读写权限
-	private static final int REQUEST_EXTERNAL_STORAGE = 1;
+	/*private static final int REQUEST_EXTERNAL_STORAGE = 1;
 	private static String[] PERMISSIONS_STORAGE = {
 			"android.permission.READ_EXTERNAL_STORAGE",
-			"android.permission.WRITE_EXTERNAL_STORAGE" };
+			"android.permission.WRITE_EXTERNAL_STORAGE" };*/
 
-	public static void verifyStoragePermissions(Activity activity) {
+	/*public static void verifyStoragePermissions(Activity activity) {
 
 		try {
 			//检测是否有写的权限
@@ -48,7 +48,7 @@ public class SolarMainActivity extends BaseCompatActivity{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	public static void navigation(){
 		ARouter.getInstance().build("/solar/login/main")
 				.navigation();
@@ -59,10 +59,10 @@ public class SolarMainActivity extends BaseCompatActivity{
 		setContentView(R.layout.solar_activity_main);
 		if (savedInstanceState == null) {
 			loadRootFragment(R.id.fragment_container, SolarMainFragment.newInstance());
-			verifyStoragePermissions(SolarMainActivity.this);
-			PgyCrashManager.register(this);
+		//	verifyStoragePermissions(SolarMainActivity.this);
+			/*PgyCrashManager.register(this);
 			PgyUpdateManager.setIsForced(true);
-			PgyUpdateManager.register(this);
+			PgyUpdateManager.register(this);*/
 
 		}
 	}
@@ -70,7 +70,7 @@ public class SolarMainActivity extends BaseCompatActivity{
 	@Override
 	protected void initView(Bundle savedInstanceState) {
 		super.initView(savedInstanceState);
-		//AppUtils.appUpdate(this);
+		AppUtils.appUpdate(this);
 		RxBus.getInstance().toObservable(UnauthorizedEvent.class)
 				.compose(this.<UnauthorizedEvent>bindUntilEvent(ActivityEvent.DESTROY))
 				.subscribe(new SimpleSubscriber<UnauthorizedEvent>() {
