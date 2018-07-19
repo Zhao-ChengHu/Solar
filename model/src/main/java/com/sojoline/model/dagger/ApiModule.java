@@ -44,16 +44,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiModule {
 	public static final String UPDATE_URL = "http://117.78.40.137/cs/v1/app/version/update";
 	//本地服务器地址
-//	private static final String API_SERVER = "192.168.58.95";
-//	private static final String API_TYPE = "cs";
-//	private static final String API_PORT = "8080";
-
+	/*private static final String API_SERVER = "192.168.58.173";
+	private static final String API_TYPE = "cs-pv";
+	private static final String API_PORT = "8080";*/
 	//云服务器地址
-	private static final String API_SERVER = "117.78.40.137";
+	private static final String API_SERVER = "117.78.26.237";
+//	private static final String API_SERVER = "117.78.40.137";
 	private static final String API_TYPE = "cs-pv";
 	private static final String API_PORT = "";
 
-	private static final int HTTP_TIME_OUT = 15;
+	private static final int HTTP_TIME_OUT = 80;
 
 	@Named("forApp")
 	@Singleton
