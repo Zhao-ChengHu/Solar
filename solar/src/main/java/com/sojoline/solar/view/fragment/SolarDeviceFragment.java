@@ -11,6 +11,7 @@ import com.sojoline.base.view.BaseFragment;
 import com.sojoline.base.widget.DrawableCenterTextView;
 import com.sojoline.model.bean.solar.CombinerInfo;
 import com.sojoline.model.bean.solar.InverterInfo;
+import com.sojoline.model.bean.solar.MonitorInfo;
 import com.sojoline.model.bean.solar.SolarDevice;
 import com.sojoline.model.bean.solar.TransformerInfo;
 import com.sojoline.model.storage.AppInfoPreferences;
@@ -24,6 +25,8 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static com.sojoline.solar.R.id.tv_news_total;
 
 /**
  * <pre>
@@ -60,10 +63,20 @@ public class SolarDeviceFragment extends BaseFragment implements SolarDeviceCont
 	@BindView(R2.id.tv_combiner_off)
 	DrawableCenterTextView 	tvCombinerOff;
 
+	@BindView(R2.id.tv_news_total)
+	TextView 				tvNewsformerTotal;
+	@BindView(R2.id.tv_news_running)
+	DrawableCenterTextView 	tvNewsformerRunning;
+	@BindView(R2.id.tv_news_warning)
+	DrawableCenterTextView 	tvNewsformerWarning;
+	@BindView(R2.id.tv_news_off)
+	DrawableCenterTextView 	tvNewsformerOff;
+
 	private SolarDevicePresenter presenter;
 	private ArrayList<TransformerInfo> transformers;
 	private ArrayList<InverterInfo> inverters;
 	private ArrayList<CombinerInfo> combiners;
+	private ArrayList<MonitorInfo> monitors;
 
 	public static SolarDeviceFragment newInstance() {
 		Bundle args = new Bundle();
@@ -92,7 +105,7 @@ public class SolarDeviceFragment extends BaseFragment implements SolarDeviceCont
 		presenter.getSolarDevices(id);
 	}
 
-	@OnClick({R2.id.ll_transformer, R2.id.ll_inverter, R2.id.ll_combiner})
+	@OnClick({R2.id.ll_transformer, R2.id.ll_inverter, R2.id.ll_combiner,R2.id.ll_monitors})
 	public void onViewClicked(View view) {
 		if (view.getId() == R.id.ll_transformer) {
 			DeviceListActivity.navigation(DeviceListActivity.DEVICE_TRANSFORMER, transformers);
@@ -100,6 +113,8 @@ public class SolarDeviceFragment extends BaseFragment implements SolarDeviceCont
 			DeviceListActivity.navigation(DeviceListActivity.DEVICE_INVERTER, inverters);
 		} else if (view.getId() == R.id.ll_combiner) {
 			DeviceListActivity.navigation(DeviceListActivity.DEVICE_COMBINER, combiners);
+		} else if (view.getId() == R.id.ll_monitors) {
+			DeviceListActivity.navigation(DeviceListActivity.DEVICE_MONITOR,monitors);
 		}
 	}
 
@@ -134,6 +149,7 @@ public class SolarDeviceFragment extends BaseFragment implements SolarDeviceCont
 			combiners = (ArrayList<CombinerInfo>) data.getCombinerList();
 			inverters = (ArrayList<InverterInfo>) data.getInverterList();
 			transformers = (ArrayList<TransformerInfo>) data.getTransformerList();
+			monitors = (ArrayList <MonitorInfo>) data.getMonitorList();
 
 			tvCombinerOff.setText(data.getCombinerOffLineNum() + "");
 			tvCombinerRunning.setText(data.getCombinerRunningNum() + "");
@@ -149,6 +165,11 @@ public class SolarDeviceFragment extends BaseFragment implements SolarDeviceCont
 			tvTransformerRunning.setText(data.getTransformerRunningNum() + "");
 			tvTransformerWarning.setText(data.getTransformerAlarmNum() + "");
 			tvTransformerTotal.setText("共" + data.getTotalTransformer() + "个");
+
+			tvNewsformerOff.setText(data.getMonitorOffLineNum() + "");
+			tvNewsformerRunning.setText(data.getMonitorRunningNum() + "");
+			tvNewsformerWarning.setText(data.getMonitorAlarmNum() + "");
+			tvNewsformerTotal.setText("共" + data.getMonitorInverters() + "个");
 		}
 	}
 }

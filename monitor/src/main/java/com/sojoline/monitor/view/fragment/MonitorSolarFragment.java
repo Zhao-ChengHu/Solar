@@ -30,6 +30,7 @@ import com.sojoline.basiclib.DebugLog;
 import com.sojoline.basiclib.util.DateUtils;
 import com.sojoline.model.bean.solar.CombinerInfo;
 import com.sojoline.model.bean.solar.InverterInfo;
+import com.sojoline.model.bean.solar.MonitorInfo;
 import com.sojoline.model.bean.solar.SolarDevice;
 import com.sojoline.model.bean.solar.TransformerInfo;
 import com.sojoline.model.db.DateElectric;
@@ -88,6 +89,7 @@ public class MonitorSolarFragment extends BaseFragment implements SolarDeviceCon
 	private ArrayList<TransformerInfo> transformers;
 	private ArrayList<InverterInfo> inverters;
 	private ArrayList<CombinerInfo> combiners;
+	private ArrayList<MonitorInfo> monitors;
 	private SolarDevicePresenter presenter;
 	private SolarEnergyPresenter energyPresenter;
 	private DeviceMenuView menuView;
@@ -152,6 +154,11 @@ public class MonitorSolarFragment extends BaseFragment implements SolarDeviceCon
 							ARouter.getInstance().build("/solar/login/device_list")
 									.withInt("device",0x2)
 									.withParcelableArrayList("object", combiners)
+									.navigation();
+						}else if (type == DeviceType.MONITOR){
+							ARouter.getInstance().build("/solar/login/device_list")
+									.withInt("device",0x2)
+									.withParcelableArrayList("object", monitors)
 									.navigation();
 						}else {
 							//告警
@@ -248,6 +255,7 @@ public class MonitorSolarFragment extends BaseFragment implements SolarDeviceCon
 			combiners = (ArrayList<CombinerInfo>) data.getCombinerList();
 			inverters = (ArrayList<InverterInfo>) data.getInverterList();
 			transformers = (ArrayList<TransformerInfo>) data.getTransformerList();
+			monitors = (ArrayList <MonitorInfo>) data.getMonitorList();
 		}
 	}
 

@@ -4,6 +4,7 @@ import com.sojoline.model.request.SolarEnergyRequest;
 import com.sojoline.model.response.BaseResponse;
 import com.sojoline.model.response.CombinerDataResponse;
 import com.sojoline.model.response.InverterDataResponse;
+import com.sojoline.model.response.MonitorDataResponse;
 import com.sojoline.model.response.MonthElectricResponse;
 import com.sojoline.model.response.SolarDataResponse;
 import com.sojoline.model.response.SolarDeviceResponse;
@@ -154,6 +155,14 @@ public interface SolarService {
 	 */
 	@GET("v1/dbstation/device/realtime/data")
 	Observable<TransformerDataResponse> getTransformerData(@Query("DeviceID") String deviceId);
+
+	/**
+	 * 获取环境测试仪实时数据
+	 * @param deviceId 设备id
+	 * @return
+	 */
+	@GET("v1/dbstation/device/realtime/data")
+	Observable<MonitorDataResponse> getMonitorData(@Query("DeviceID") String deviceId);
 
 
 	/**

@@ -9,12 +9,14 @@ import android.widget.TextView;
 
 import com.sojoline.model.bean.solar.CombinerInfo;
 import com.sojoline.model.bean.solar.InverterInfo;
+import com.sojoline.model.bean.solar.MonitorInfo;
 import com.sojoline.model.bean.solar.TransformerInfo;
 import com.sojoline.solar.R;
 import com.sojoline.solar.R2;
 import com.sojoline.solar.view.activity.CombinerActivity;
 import com.sojoline.solar.view.activity.DeviceListActivity;
 import com.sojoline.solar.view.activity.InverterActivity;
+import com.sojoline.solar.view.activity.MonitorActivity;
 import com.sojoline.solar.view.activity.TransformerActivity;
 
 import java.util.ArrayList;
@@ -76,11 +78,11 @@ public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.Vi
 					TransformerActivity.navigation(info.getTransFormerID());
 				}
 			});
-		}else {
+		} else if (device == DeviceListActivity.DEVICE_INVERTER) {
 			final InverterInfo info = (InverterInfo) o;
-			if (TextUtils.isEmpty(info.getInverterName())){
+			if (TextUtils.isEmpty(info.getInverterName())) {
 				holder.tvName.setText(info.getInverterName());
-			}else {
+			} else {
 				holder.tvName.setText(info.getInverterID());
 			}
 			holder.tvName.setText(info.getInverterName());
@@ -88,6 +90,20 @@ public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.Vi
 				@Override
 				public void onClick(View v) {
 					InverterActivity.navigation(info.getInverterID());
+				}
+			});
+		} else{
+			final MonitorInfo info = (MonitorInfo) o;
+			if (TextUtils.isEmpty(info.getEnvDetectorName())) {
+				holder.tvName.setText(info.getEnvDetectorName());
+			} else {
+				holder.tvName.setText(info.getEnvDetectorID());
+			}
+			holder.tvName.setText(info.getEnvDetectorName());
+			holder.tvName.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					MonitorActivity.navigation(info.getEnvDetectorID());
 				}
 			});
 		}

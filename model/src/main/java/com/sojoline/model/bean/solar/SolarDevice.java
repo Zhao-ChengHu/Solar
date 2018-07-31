@@ -31,6 +31,11 @@ public class SolarDevice {
 	 * transformerAlarmNum : 0
 	 * transformerFaultNum : 0
 	 * transformerRunningNum : 0
+	 * 'totalEnvDetector': total_result_env[0],
+	 'envDetectorLineNum': stop_num_env,
+	 'envDetectorRunningNum': run_num_env,
+	 'envDetectorAlarmNum': alarm_num_env,
+	 'envDetectorList': dict_items_env,
 	 */
 
 	private int combinerAlarmNum;
@@ -43,6 +48,7 @@ public class SolarDevice {
 	private int totalCombiner;
 	private int totalInverters;
 	private int totalTransformer;
+	private int totalEnvDetector ;
 	private int transformerAlarmNum;
 	private int transformerFaultNum;
 	private int transformerRunningNum;
@@ -52,7 +58,42 @@ public class SolarDevice {
 	private List<InverterInfo> inverterList;
 	@SerializedName("TransformerList")
 	private List<TransformerInfo> transformerList;
+	private int envDetectorAlarmNum;
+	private int envDetectorLineNum;
+	private int envDetectorRunningNum;
+	@SerializedName("envDetectorList")
+	private List<MonitorInfo> monitorList;
+	public int getMonitorAlarmNum() {
+		return envDetectorAlarmNum;
+	}
 
+	public void setMonitorAlarmNum(int envDetectorAlarmNum) {
+		this.envDetectorAlarmNum = envDetectorAlarmNum;
+	}
+
+	public int getMonitorOffLineNum() {
+		return envDetectorLineNum;
+	}
+
+	public void setMonitorOffLineNum(int envDetectorLineNum) {
+		this.envDetectorLineNum = envDetectorLineNum;
+	}
+
+	public int getMonitorRunningNum() {
+		return envDetectorRunningNum;
+	}
+
+	public void setMonitorRunningNum(int envDetectorRunningNum) {
+		this.envDetectorRunningNum = envDetectorRunningNum;
+	}
+
+	public int getMonitorInverters() {
+		return totalEnvDetector;
+	}
+
+	public void setMonitorInverters(int totalEnvDetector) {
+		this.totalEnvDetector = totalEnvDetector;
+	}
 	public int getCombinerAlarmNum() {
 		return combinerAlarmNum;
 	}
@@ -174,4 +215,13 @@ public class SolarDevice {
 	public void setTransformerList(List<TransformerInfo> transformerList) {
 		this.transformerList = transformerList;
 	}
+
+	public List<MonitorInfo> getMonitorList() {
+		return monitorList;
+	}
+
+	public void setMonitorList(List<MonitorInfo> monitorList) {
+		this.monitorList = monitorList;
+	}
+
 }

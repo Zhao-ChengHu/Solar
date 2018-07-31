@@ -67,6 +67,7 @@
         <activity android:name="com.sojoline.solar.view.activity.TransformerActivity"/>
         <activity android:name="com.sojoline.solar.view.activity.InverterActivity"/>
         <activity android:name="com.sojoline.solar.view.activity.CombinerActivity"/>
+        <activity android:name="com.sojoline.solar.view.activity.MonitorActivity"/>
         <activity android:name="com.sojoline.solar.view.activity.WarningListActivity"/>
 
         <!--monitor activity-->

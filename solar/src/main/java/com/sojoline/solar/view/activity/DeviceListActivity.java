@@ -15,6 +15,7 @@ import com.sojoline.model.bean.solar.TransformerInfo;
 import com.sojoline.solar.R;
 import com.sojoline.solar.R2;
 import com.sojoline.solar.adapter.DeviceListAdapter;
+import com.sojoline.model.bean.solar.MonitorInfo;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,7 @@ public class DeviceListActivity extends BaseCompatActivity {
 	public static final int DEVICE_TRANSFORMER = 0x0;
 	public static final int DEVICE_INVERTER = 0x1;
 	public static final int DEVICE_COMBINER = 0x2;
+	public static final int DEVICE_MONITOR = 0x3;
 
 	public static void navigation(int device, ArrayList<? extends Parcelable> object){
 		ARouter.getInstance().build("/solar/login/device_list")
@@ -65,9 +67,13 @@ public class DeviceListActivity extends BaseCompatActivity {
 			initToolbarNav("逆变器列表");
 			ArrayList<InverterInfo> list = (ArrayList<InverterInfo>) object;
 			adapter = new DeviceListAdapter(list, device);
-		}else{
+		}else if (device == DEVICE_COMBINER){
 			initToolbarNav("汇流箱列表");
 			ArrayList<CombinerInfo> list = (ArrayList<CombinerInfo>) object;
+			adapter = new DeviceListAdapter(list, device);
+		}else if(device == DEVICE_MONITOR){
+			initToolbarNav("环境检测仪");
+			ArrayList<MonitorInfo> list = (ArrayList <MonitorInfo>) object;
 			adapter = new DeviceListAdapter(list, device);
 		}
 

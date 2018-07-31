@@ -7,7 +7,7 @@ import com.sojoline.model.response.BaseResponse;
 import com.sojoline.model.response.CombinerDataResponse;
 import com.sojoline.model.response.InverterDataResponse;
 import com.sojoline.model.response.TransformerDataResponse;
-
+import com.sojoline.model.response.MonitorDataResponse;
 import rx.Subscription;
 
 /**
@@ -23,7 +23,7 @@ public class DeviceDataPresenter extends DeviceDataContract.Presenter {
 	private Subscription combinerSubscription;
 	private Subscription transformerSubscription;
 	private Subscription inverterSubscription;
-
+    private Subscription mointorSubscription;
 	@Override
 	public void getDeviceData(String id) {
 		ApiComponentHolder.apiComponent
@@ -166,6 +166,48 @@ public class DeviceDataPresenter extends DeviceDataContract.Presenter {
 
 						@Override
 						public void onNext(InverterDataResponse response) {
+							super.onNext(response);
+							getView().showNormal();
+							if (response.isSuccess()) {
+								getView().success(response.getData());
+							} else {
+								getView().requestFailed(response.getMsg());
+							}
+						}
+
+						@Override
+						public void onStart() {
+							super.onStart();
+							if (getView() != null) {
+								getView().showLoading(null);
+							}
+						}
+					});
+		}
+
+	}
+
+	@Override
+	public void getMonitorData(String id) {
+		if (mointorSubscription == null || mointorSubscription.isUnsubscribed()) {
+			mointorSubscription = ApiComponentHolder.apiComponent
+					.solarService()
+					.getMonitorData(id)
+					.take(1)
+					.compose(SchedulersCompat.<MonitorDataResponse>applyNewSchedulers())
+					.subscribe(new SimpleSubscriber<MonitorDataResponse>() {
+						@Override
+						public void onError(Throwable e) {
+							super.onError(e);
+							e.printStackTrace();
+							if (getView() != null) {
+								getView().showNormal();
+								getView().requestFailed(null);
+							}
+						}
+
+						@Override
+						public void onNext(MonitorDataResponse response) {
 							super.onNext(response);
 							getView().showNormal();
 							if (response.isSuccess()) {

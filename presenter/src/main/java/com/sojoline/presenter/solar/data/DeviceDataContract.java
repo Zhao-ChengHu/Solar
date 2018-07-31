@@ -41,5 +41,7 @@ public interface DeviceDataContract {
 		 * @param id 设备id
 		 */
 		public abstract void getInverterData(String id);
-	}
+
+        public abstract void getMonitorData(String id);
+    }
 }

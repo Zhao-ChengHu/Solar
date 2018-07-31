@@ -10,5 +10,5 @@ package com.sojoline.base.widget;
  */
 
 public enum DeviceType {
-	INVERTER, COMBINER, TRANSFORMER, NONE
+	INVERTER, COMBINER, MONITOR,TRANSFORMER, NONE
 }
