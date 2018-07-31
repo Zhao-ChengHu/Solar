@@ -106,7 +106,7 @@ public class SolarStationFragment extends BaseFragment implements SolarDataContr
 		//发起请求
 		dataPresenter.getSolarStationData(id);
 
-		capacityView.setCapacity(60);
+		//capacityView.setCapacity(40);
 
 		ivCO2.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -201,6 +201,7 @@ public class SolarStationFragment extends BaseFragment implements SolarDataContr
 			tvTotalProfit.setText(String.format(Locale.CHINA, "%.2f", Float.parseFloat(data.getPvTotalIncome())));
 			tvTotalEnergy.setText(String.format(Locale.CHINA, "%.1f", Float.parseFloat(data.getPvTotalElectric())));
 			tvTotalTree.setText(data.getTreePlant() + "");
+			capacityView.setCapacity(data.getElectricityPower());
 		}
 
 	}

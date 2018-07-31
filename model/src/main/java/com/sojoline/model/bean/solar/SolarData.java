@@ -75,6 +75,7 @@ public class SolarData {
 	@SerializedName("b_actived")
 	private String actived;
 	private String createTime;
+	private int electricityPower;
 	//当前发电量
 	private String currentElectric;
 	//当前功率
@@ -244,7 +245,12 @@ public class SolarData {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	public void setElectricityPower(int electricityPower) {
+		this.electricityPower = electricityPower;
+	}
+	public int getElectricityPower(){
+		return electricityPower;
+	}
 	public String getJoinTime() {
 		return joinTime;
 	}
