@@ -45,7 +45,7 @@ public class SolarMainFragment extends BaseMainFragment implements SolarEnergyCo
 
 	private SupportFragment[] fragments = new SupportFragment[4];
 	private int prePosition = -1;
-	private SolarEnergyPresenter presenter;
+	//private SolarEnergyPresenter presenter;
 
 	public static SolarMainFragment newInstance() {
 		Bundle args = new Bundle();
@@ -62,8 +62,8 @@ public class SolarMainFragment extends BaseMainFragment implements SolarEnergyCo
 	@Override
 	protected void initPresenter() {
 		super.initPresenter();
-		presenter = new SolarEnergyPresenter();
-		presenter.attachView(this);
+		/*presenter = new SolarEnergyPresenter();
+		presenter.attachView(this);*/
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class SolarMainFragment extends BaseMainFragment implements SolarEnergyCo
 		initBottomNavigation();
 	}
 
-	@Override
+	/*@Override
 	public void onSupportVisible() {
 		super.onSupportVisible();
 		String id = AppInfoPreferences.get().getStationId();
@@ -100,7 +100,7 @@ public class SolarMainFragment extends BaseMainFragment implements SolarEnergyCo
 		int day = DateUtils.getDay();
 		request.setQueryTime(String.format(Locale.CHINA,"%d-%s-%s", year, getFormat(month), getFormat(day)));
 		presenter.getSolarEnergy(request);
-	}
+	}*/
 
 	private void initBottomNavigation(){
 		ArrayList<CustomTabEntity> list = new ArrayList<>();
@@ -173,6 +173,6 @@ public class SolarMainFragment extends BaseMainFragment implements SolarEnergyCo
 	@Override
 	protected void destroyPresenter() {
 		super.destroyPresenter();
-		presenter.detachView();
+		//presenter.detachView();
 	}
 }

@@ -134,6 +134,9 @@ public class SolarEnergyFragment extends BaseFragment implements SolarEnergyCont
 		setImageByDate();
 
 		btDate.setText(String.format(Locale.CHINA,"%d-%s-%s", year, getFormat(month), getFormat(day)));
+		request.setQueryType("day");
+		request.setQueryTime(String.format(Locale.CHINA,"%d-%s-%s", year, getFormat(month), getFormat(day)));
+		presenter.getSolarEnergy(request);
 		String[] titles = getResources().getStringArray(R.array.barTitles);
 		topBar.setTabData(titles);
 		topBar.setOnTabSelectListener(new OnTabSelectListener() {

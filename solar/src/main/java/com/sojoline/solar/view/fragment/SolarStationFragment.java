@@ -22,12 +22,15 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.sojoline.base.util.AppUtils;
 import com.sojoline.base.view.BaseFragment;
 import com.sojoline.base.widget.SimpleMarkerView;
+import com.sojoline.basiclib.util.DateUtils;
 import com.sojoline.model.bean.solar.SolarData;
 import com.sojoline.model.db.DateElectric;
+import com.sojoline.model.request.SolarEnergyRequest;
 import com.sojoline.model.storage.AppInfoPreferences;
 import com.sojoline.presenter.solar.data.SolarDataContract;
 import com.sojoline.presenter.solar.data.SolarDataPresenter;
 import com.sojoline.presenter.solar.data.SolarEnergyContract;
+import com.sojoline.presenter.solar.data.SolarEnergyPresenter;
 import com.sojoline.solar.R;
 import com.sojoline.solar.R2;
 import com.sojoline.solar.widget.MsgDialog;
@@ -78,7 +81,7 @@ public class SolarStationFragment extends BaseFragment implements SolarDataContr
 	ImageView ivTree;
 
 	private SolarDataPresenter dataPresenter;
-
+	private SolarEnergyPresenter presenter;
 	public static SolarStationFragment newInstance() {
 		Bundle args = new Bundle();
 		SolarStationFragment fragment = new SolarStationFragment();
@@ -96,8 +99,34 @@ public class SolarStationFragment extends BaseFragment implements SolarDataContr
 		super.initPresenter();
 		dataPresenter = new SolarDataPresenter();
 		dataPresenter.attachView(this);
+		presenter = new SolarEnergyPresenter();
+		presenter.attachView(this);
 	}
-
+	@Override
+	public void onSupportVisible() {
+		super.onSupportVisible();
+		String id = AppInfoPreferences.get().getStationId();
+		SolarEnergyRequest request = new SolarEnergyRequest();
+		request.setDPStationID(id);
+		request.setQueryType("day");
+		int year = DateUtils.getYear();
+		int month = DateUtils.getMonth();
+		int day = DateUtils.getDay();
+		request.setQueryTime(String.format(Locale.CHINA,"%d-%s-%s", year, getFormat(month), getFormat(day)));
+		presenter.getSolarEnergy(request);
+	}
+	/**
+	 * 填充日期格式，把一位变成两位：“1”--“01”
+	 * @param num 日期
+	 * @return string
+	 */
+	private String getFormat(int num){
+		if (num > 9){
+			return num + "";
+		}else {
+			return "0" + num;
+		}
+	}
 	@Override
 	protected void initView(@Nullable Bundle savedInstanceState) {
 		super.initView(savedInstanceState);
@@ -169,6 +198,7 @@ public class SolarStationFragment extends BaseFragment implements SolarDataContr
 	protected void destroyPresenter() {
 		super.destroyPresenter();
 		dataPresenter.detachView();
+		presenter.detachView();
 	}
 
 	@Override
