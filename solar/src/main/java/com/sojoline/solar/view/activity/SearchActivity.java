@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -50,6 +51,8 @@ public class SearchActivity extends BaseCompatActivity implements CollectSolarCo
 
 	@BindView(R2.id.et_search)
 	EditText etSearch;
+	@BindView(R2.id.iv_1)
+	ImageView imageView;
 	@BindView(R2.id.iv_delete)
 	ImageButton ivDelete;
 	@BindView(R2.id.recycler_view)
@@ -119,8 +122,20 @@ public class SearchActivity extends BaseCompatActivity implements CollectSolarCo
 				}
 			}
 		});
-
-		etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+		imageView.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				String s = etSearch.getText().toString();
+				if (TextUtils.isEmpty(s)) {
+					showToast("请输入电站名称");
+				} else {
+					searchStation(s);
+					//隐藏软键盘
+					KeyboardUtils.hideSoftInput(SearchActivity.this);
+				}
+			}
+		});
+	/*	etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 			@Override
 			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 				if (actionId == EditorInfo.IME_ACTION_SEARCH){
@@ -136,7 +151,7 @@ public class SearchActivity extends BaseCompatActivity implements CollectSolarCo
 				}
 				return false;
 			}
-		});
+		});*/
 
 	}
 
