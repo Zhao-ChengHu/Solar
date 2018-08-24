@@ -420,4 +420,427 @@ public class InverterData {
 	public void setTotalElectric(float totalElectric) {
 		this.totalElectric = totalElectric;
 	}
+
+		private String DcCurrentTwo;
+		private String DcCurrentOne;
+		private String DcVoltageThree;
+		private Object InverterYearElec;
+		private int PV4InputA;
+		private String TotalDCPower;
+		private Object InputTotalPower;
+		private String DcCurrentThree;
+		private String DcVoltageTwo;
+		private int PV2InputA;
+		private String PV8InputA;
+		private float VoltageB;
+		private float VoltageC;
+		private float VoltageA;
+		private int PV5InputA;
+		private int PV1InputA;
+		private String TotalOperatingTime;
+		private float InverterDayElec;
+		private Object PV1InputV;
+		private float InverterMonthElec;
+		private Object PV5InputV;
+		private float InverterTem;
+		private String NegativeTurnGroundVoltage;
+		private float PowerFactor;
+		private Object StartTime;
+		private Object PV2InputV;
+		private String DcVoltageOne;
+		private Object InverterEfficiency;
+		private Object PV4InputV;
+		private String PV14InputA;
+		private String InverterState;
+		private Object ShutdownTime;
+		private String BusVoltage;
+		private int PV3InputA;
+		private String PV11InputA;
+		private Object PV6InputV;
+		private String PV10InputA;
+		private String PV12InputA;
+		private String PV9InputA;
+		private String PV13InputA;
+		private int PV6InputA;
+		private Object PV3InputV;
+		private String PV7InputA;
+
+		public String getDcCurrentTwo() {
+			return DcCurrentTwo;
+		}
+	    public String getInverterState() {
+		      if ("0".equals(InverterState)){
+		      	return "运行";
+		      }else if("8000".equals(InverterState)){
+		      	return "停机";
+			  } else if ("1300".equals(InverterState)) {
+		      	return "按键关机";
+			  } else if ("1500".equals(InverterState)) {
+		      	return "紧急停机";
+			  } else if ("1400".equals(InverterState)) {
+		      	return "待机";
+			  } else if ("1600".equals(InverterState)) {
+		      	return "启动中";
+			  } else if ("9100".equals(InverterState)) {
+		      	return "告警运行";
+			  } else if ("8100".equals(InverterState)) {
+		      	return "降额运行";
+			  } else if ("8200".equals(InverterState)) {
+		      	return "调度运行";
+			  } else if ("5500".equals(InverterState)) {
+		      	return "故障停机";
+			  } else if ("2500".equals(InverterState)) {
+				  return "通讯故障";
+			  } else {
+		      	return "未知异常";
+			  }
+	    }
+		public void setDcCurrentTwo(String DcCurrentTwo) {
+			this.DcCurrentTwo = DcCurrentTwo;
+		}
+
+		public String getDcCurrentOne() {
+			return DcCurrentOne;
+		}
+
+		public void setDcCurrentOne(String DcCurrentOne) {
+			this.DcCurrentOne = DcCurrentOne;
+		}
+
+		public String getDcVoltageThree() {
+			return DcVoltageThree;
+		}
+
+		public void setDcVoltageThree(String DcVoltageThree) {
+			this.DcVoltageThree = DcVoltageThree;
+		}
+
+		public Object getInverterYearElec() {
+			return InverterYearElec;
+		}
+
+		public void setInverterYearElec(Object InverterYearElec) {
+			this.InverterYearElec = InverterYearElec;
+		}
+
+		public int getPV4InputA() {
+			return PV4InputA;
+		}
+
+		public void setPV4InputA(int PV4InputA) {
+			this.PV4InputA = PV4InputA;
+		}
+
+		public String getTotalDCPower() {
+			return TotalDCPower;
+		}
+
+		public void setTotalDCPower(String TotalDCPower) {
+			this.TotalDCPower = TotalDCPower;
+		}
+
+		public Object getInputTotalPower() {
+			return InputTotalPower;
+		}
+
+		public void setInputTotalPower(Object InputTotalPower) {
+			this.InputTotalPower = InputTotalPower;
+		}
+		public String getDcCurrentThree() {
+			return DcCurrentThree;
+		}
+
+		public void setDcCurrentThree(String DcCurrentThree) {
+			this.DcCurrentThree = DcCurrentThree;
+		}
+
+		public String getDcVoltageTwo() {
+			return DcVoltageTwo;
+		}
+
+		public void setDcVoltageTwo(String DcVoltageTwo) {
+			this.DcVoltageTwo = DcVoltageTwo;
+		}
+
+		public int getPV2InputA() {
+			return PV2InputA;
+		}
+
+		public void setPV2InputA(int PV2InputA) {
+			this.PV2InputA = PV2InputA;
+		}
+
+		public String getPV8InputA() {
+			return PV8InputA;
+		}
+
+		public void setPV8InputA(String PV8InputA) {
+			this.PV8InputA = PV8InputA;
+		}
+
+		public float getVoltageB() {
+			return VoltageB;
+		}
+
+		public void setVoltageB(float VoltageB) {
+			this.VoltageB = VoltageB;
+		}
+
+		public float getVoltageC() {
+			return VoltageC;
+		}
+
+		public void setVoltageC(float VoltageC) {
+			this.VoltageC = VoltageC;
+		}
+
+		public float getVoltageA() {
+			return VoltageA;
+		}
+
+		public void setVoltageA(float VoltageA) {
+			this.VoltageA = VoltageA;
+		}
+
+
+		public int getPV5InputA() {
+			return PV5InputA;
+		}
+
+		public void setPV5InputA(int PV5InputA) {
+			this.PV5InputA = PV5InputA;
+		}
+
+		public int getPV1InputA() {
+			return PV1InputA;
+		}
+
+		public void setPV1InputA(int PV1InputA) {
+			this.PV1InputA = PV1InputA;
+		}
+
+		public String getTotalOperatingTime() {
+			return TotalOperatingTime;
+		}
+
+		public void setTotalOperatingTime(String TotalOperatingTime) {
+			this.TotalOperatingTime = TotalOperatingTime;
+		}
+
+
+		public float getInverterDayElec() {
+			return InverterDayElec;
+		}
+
+		public void setInverterDayElec(float InverterDayElec) {
+			this.InverterDayElec = InverterDayElec;
+		}
+
+
+
+		public Object getPV1InputV() {
+			return PV1InputV;
+		}
+
+		public void setPV1InputV(Object PV1InputV) {
+			this.PV1InputV = PV1InputV;
+		}
+
+
+		public float getInverterMonthElec() {
+			return InverterMonthElec;
+		}
+
+		public void setInverterMonthElec(float InverterMonthElec) {
+			this.InverterMonthElec = InverterMonthElec;
+		}
+
+		public Object getPV5InputV() {
+			return PV5InputV;
+		}
+
+		public void setPV5InputV(Object PV5InputV) {
+			this.PV5InputV = PV5InputV;
+		}
+
+		public float getInverterTem() {
+			return InverterTem;
+		}
+
+		public void setInverterTem(float InverterTem) {
+			this.InverterTem = InverterTem;
+		}
+
+
+
+		public String getNegativeTurnGroundVoltage() {
+			return NegativeTurnGroundVoltage;
+		}
+
+		public void setNegativeTurnGroundVoltage(String NegativeTurnGroundVoltage) {
+			this.NegativeTurnGroundVoltage = NegativeTurnGroundVoltage;
+		}
+
+		public float getPowerFactor() {
+			return PowerFactor;
+		}
+
+		public void setPowerFactor(float PowerFactor) {
+			this.PowerFactor = PowerFactor;
+		}
+
+
+
+		public Object getStartTime() {
+			return StartTime;
+		}
+
+		public void setStartTime(Object StartTime) {
+			this.StartTime = StartTime;
+		}
+
+
+		public Object getPV2InputV() {
+			return PV2InputV;
+		}
+
+		public void setPV2InputV(Object PV2InputV) {
+			this.PV2InputV = PV2InputV;
+		}
+
+
+
+
+		public String getDcVoltageOne() {
+			return DcVoltageOne;
+		}
+
+		public void setDcVoltageOne(String DcVoltageOne) {
+			this.DcVoltageOne = DcVoltageOne;
+		}
+
+		public Object getInverterEfficiency() {
+			return InverterEfficiency;
+		}
+
+		public void setInverterEfficiency(Object InverterEfficiency) {
+			this.InverterEfficiency = InverterEfficiency;
+		}
+
+
+		public Object getPV4InputV() {
+			return PV4InputV;
+		}
+
+		public void setPV4InputV(Object PV4InputV) {
+			this.PV4InputV = PV4InputV;
+		}
+
+		public String getPV14InputA() {
+			return PV14InputA;
+		}
+
+		public void setPV14InputA(String PV14InputA) {
+			this.PV14InputA = PV14InputA;
+		}
+
+		public void setInverterState(String InverterState) {
+			this.InverterState = InverterState;
+		}
+
+		public Object getShutdownTime() {
+			return ShutdownTime;
+		}
+
+		public void setShutdownTime(Object ShutdownTime) {
+			this.ShutdownTime = ShutdownTime;
+		}
+
+		public String getBusVoltage() {
+			return BusVoltage;
+		}
+
+		public void setBusVoltage(String BusVoltage) {
+			this.BusVoltage = BusVoltage;
+		}
+
+		public int getPV3InputA() {
+			return PV3InputA;
+		}
+
+		public void setPV3InputA(int PV3InputA) {
+			this.PV3InputA = PV3InputA;
+		}
+
+
+		public String getPV11InputA() {
+			return PV11InputA;
+		}
+		public void setPV11InputA(String PV11InputA) {
+			this.PV11InputA = PV11InputA;
+		}
+		public Object getPV6InputV() {
+			return PV6InputV;
+		}
+
+		public void setPV6InputV(Object PV6InputV) {
+			this.PV6InputV = PV6InputV;
+		}
+
+		public String getPV10InputA() {
+			return PV10InputA;
+		}
+
+		public void setPV10InputA(String PV10InputA) {
+			this.PV10InputA = PV10InputA;
+		}
+
+
+		public String getPV12InputA() {
+			return PV12InputA;
+		}
+
+		public void setPV12InputA(String PV12InputA) {
+			this.PV12InputA = PV12InputA;
+		}
+
+		public String getPV9InputA() {
+			return PV9InputA;
+		}
+
+		public void setPV9InputA(String PV9InputA) {
+			this.PV9InputA = PV9InputA;
+		}
+
+		public String getPV13InputA() {
+			return PV13InputA;
+		}
+
+		public void setPV13InputA(String PV13InputA) {
+			this.PV13InputA = PV13InputA;
+		}
+
+		public int getPV6InputA() {
+			return PV6InputA;
+		}
+
+		public void setPV6InputA(int PV6InputA) {
+			this.PV6InputA = PV6InputA;
+		}
+
+		public Object getPV3InputV() {
+			return PV3InputV;
+		}
+
+		public void setPV3InputV(Object PV3InputV) {
+			this.PV3InputV = PV3InputV;
+		}
+
+		public String getPV7InputA() {
+			return PV7InputA;
+		}
+
+		public void setPV7InputA(String PV7InputA) {
+			this.PV7InputA = PV7InputA;
+		}
 }
