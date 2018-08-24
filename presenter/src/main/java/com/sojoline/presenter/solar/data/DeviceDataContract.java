@@ -5,8 +5,8 @@ import com.sojoline.presenter.IBaseView;
 
 /**
  * <pre>
- *     @author : 李小勇
- *     date   : 2018/01/08
+ *     @author : zhaochenghu
+ *     date   : 2018/08/24
  *     desc   :
  *     version: 1.0
  * </pre>
@@ -43,5 +43,7 @@ public interface DeviceDataContract {
 		public abstract void getInverterData(String id);
 
         public abstract void getMonitorData(String id);
+
+        public abstract void getPowermeterData(String id);
     }
 }

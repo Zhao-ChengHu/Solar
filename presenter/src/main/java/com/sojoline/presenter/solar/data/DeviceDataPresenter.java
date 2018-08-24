@@ -6,14 +6,15 @@ import com.sojoline.model.dagger.ApiComponentHolder;
 import com.sojoline.model.response.BaseResponse;
 import com.sojoline.model.response.CombinerDataResponse;
 import com.sojoline.model.response.InverterDataResponse;
+import com.sojoline.model.response.PowermeterDataResponse;
 import com.sojoline.model.response.TransformerDataResponse;
 import com.sojoline.model.response.MonitorDataResponse;
 import rx.Subscription;
 
 /**
  * <pre>
- *     @author : 李小勇
- *     date   : 2018/01/08
+ *     @author : zhaochenghu
+ *     date   : 2018/08/24
  *     desc   :
  *     version: 1.0
  * </pre>
@@ -24,6 +25,7 @@ public class DeviceDataPresenter extends DeviceDataContract.Presenter {
 	private Subscription transformerSubscription;
 	private Subscription inverterSubscription;
     private Subscription mointorSubscription;
+	private Subscription PowermeterSubscription;
 	@Override
 	public void getDeviceData(String id) {
 		ApiComponentHolder.apiComponent
@@ -208,6 +210,48 @@ public class DeviceDataPresenter extends DeviceDataContract.Presenter {
 
 						@Override
 						public void onNext(MonitorDataResponse response) {
+							super.onNext(response);
+							getView().showNormal();
+							if (response.isSuccess()) {
+								getView().success(response.getData());
+							} else {
+								getView().requestFailed(response.getMsg());
+							}
+						}
+
+						@Override
+						public void onStart() {
+							super.onStart();
+							if (getView() != null) {
+								getView().showLoading(null);
+							}
+						}
+					});
+		}
+
+	}
+
+	@Override
+	public void getPowermeterData(String id) {
+		if (PowermeterSubscription == null || PowermeterSubscription.isUnsubscribed()) {
+			PowermeterSubscription = ApiComponentHolder.apiComponent
+					.solarService()
+					.getPowermeterData(id)
+					.take(1)
+					.compose(SchedulersCompat.<PowermeterDataResponse>applyNewSchedulers())
+					.subscribe(new SimpleSubscriber<PowermeterDataResponse>() {
+						@Override
+						public void onError(Throwable e) {
+							super.onError(e);
+							e.printStackTrace();
+							if (getView() != null) {
+								getView().showNormal();
+								getView().requestFailed(null);
+							}
+						}
+
+						@Override
+						public void onNext(PowermeterDataResponse response) {
 							super.onNext(response);
 							getView().showNormal();
 							if (response.isSuccess()) {

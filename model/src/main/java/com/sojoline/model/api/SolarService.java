@@ -6,6 +6,7 @@ import com.sojoline.model.response.CombinerDataResponse;
 import com.sojoline.model.response.InverterDataResponse;
 import com.sojoline.model.response.MonitorDataResponse;
 import com.sojoline.model.response.MonthElectricResponse;
+import com.sojoline.model.response.PowermeterDataResponse;
 import com.sojoline.model.response.SolarDataResponse;
 import com.sojoline.model.response.SolarDeviceResponse;
 import com.sojoline.model.response.DayElectricResponse;
@@ -163,7 +164,13 @@ public interface SolarService {
 	 */
 	@GET("v1/dbstation/device/realtime/data")
 	Observable<MonitorDataResponse> getMonitorData(@Query("DeviceID") String deviceId);
-
+	/**
+	 * 获取多功能电力仪实时数据
+	 * @param deviceId 设备id
+	 * @return
+	 */
+	@GET("v1/dbstation/device/realtime/data")
+	Observable<PowermeterDataResponse> getPowermeterData(@Query("DeviceID") String deviceId);
 
 	/**
 	 * 获取告警信息

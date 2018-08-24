@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.sojoline.base.view.BaseCompatActivity;
 import com.sojoline.model.bean.solar.CombinerInfo;
 import com.sojoline.model.bean.solar.InverterInfo;
+import com.sojoline.model.bean.solar.PowermeterInfo;
 import com.sojoline.model.bean.solar.TransformerInfo;
 import com.sojoline.solar.R;
 import com.sojoline.solar.R2;
@@ -41,6 +42,7 @@ public class DeviceListActivity extends BaseCompatActivity {
 	public static final int DEVICE_INVERTER = 0x1;
 	public static final int DEVICE_COMBINER = 0x2;
 	public static final int DEVICE_MONITOR = 0x3;
+	public static final int DEVICE_POWERMETER = 0x4;
 
 	public static void navigation(int device, ArrayList<? extends Parcelable> object){
 		ARouter.getInstance().build("/solar/login/device_list")
@@ -75,8 +77,11 @@ public class DeviceListActivity extends BaseCompatActivity {
 			initToolbarNav("环境检测仪");
 			ArrayList<MonitorInfo> list = (ArrayList <MonitorInfo>) object;
 			adapter = new DeviceListAdapter(list, device);
+		}else if(device == DEVICE_POWERMETER) {
+			initToolbarNav("多功能电力仪");
+			ArrayList<PowermeterInfo> list = (ArrayList<PowermeterInfo>) object;
+			adapter = new DeviceListAdapter(list, device);
 		}
-
 		recyclerView.setHasFixedSize(true);
 		recyclerView.setLayoutManager(new LinearLayoutManager(this));
 		recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
