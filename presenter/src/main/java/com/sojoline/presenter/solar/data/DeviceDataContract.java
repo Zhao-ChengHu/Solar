@@ -45,5 +45,7 @@ public interface DeviceDataContract {
         public abstract void getMonitorData(String id);
 
         public abstract void getPowermeterData(String id);
+
+        public abstract void getMeterData(String id);
     }
 }

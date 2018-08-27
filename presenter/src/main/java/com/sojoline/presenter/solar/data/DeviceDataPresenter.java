@@ -6,6 +6,7 @@ import com.sojoline.model.dagger.ApiComponentHolder;
 import com.sojoline.model.response.BaseResponse;
 import com.sojoline.model.response.CombinerDataResponse;
 import com.sojoline.model.response.InverterDataResponse;
+import com.sojoline.model.response.MeterDataResponse;
 import com.sojoline.model.response.PowermeterDataResponse;
 import com.sojoline.model.response.TransformerDataResponse;
 import com.sojoline.model.response.MonitorDataResponse;
@@ -26,6 +27,7 @@ public class DeviceDataPresenter extends DeviceDataContract.Presenter {
 	private Subscription inverterSubscription;
     private Subscription mointorSubscription;
 	private Subscription PowermeterSubscription;
+	private Subscription MeterSubscription;
 	@Override
 	public void getDeviceData(String id) {
 		ApiComponentHolder.apiComponent
@@ -252,6 +254,48 @@ public class DeviceDataPresenter extends DeviceDataContract.Presenter {
 
 						@Override
 						public void onNext(PowermeterDataResponse response) {
+							super.onNext(response);
+							getView().showNormal();
+							if (response.isSuccess()) {
+								getView().success(response.getData());
+							} else {
+								getView().requestFailed(response.getMsg());
+							}
+						}
+
+						@Override
+						public void onStart() {
+							super.onStart();
+							if (getView() != null) {
+								getView().showLoading(null);
+							}
+						}
+					});
+		}
+
+	}
+
+	@Override
+	public void getMeterData(String id) {
+		if (MeterSubscription == null || MeterSubscription.isUnsubscribed()) {
+			MeterSubscription = ApiComponentHolder.apiComponent
+					.solarService()
+					.getMeterData(id)
+					.take(1)
+					.compose(SchedulersCompat.<MeterDataResponse>applyNewSchedulers())
+					.subscribe(new SimpleSubscriber<MeterDataResponse>() {
+						@Override
+						public void onError(Throwable e) {
+							super.onError(e);
+							e.printStackTrace();
+							if (getView() != null) {
+								getView().showNormal();
+								getView().requestFailed(null);
+							}
+						}
+
+						@Override
+						public void onNext(MeterDataResponse response) {
 							super.onNext(response);
 							getView().showNormal();
 							if (response.isSuccess()) {

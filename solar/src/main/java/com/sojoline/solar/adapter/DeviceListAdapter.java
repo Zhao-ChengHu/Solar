@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.sojoline.model.bean.solar.CombinerInfo;
 import com.sojoline.model.bean.solar.InverterInfo;
+import com.sojoline.model.bean.solar.MeterInfo;
 import com.sojoline.model.bean.solar.MonitorInfo;
 import com.sojoline.model.bean.solar.PowermeterInfo;
 import com.sojoline.model.bean.solar.TransformerInfo;
@@ -17,6 +18,7 @@ import com.sojoline.solar.R2;
 import com.sojoline.solar.view.activity.CombinerActivity;
 import com.sojoline.solar.view.activity.DeviceListActivity;
 import com.sojoline.solar.view.activity.InverterActivity;
+import com.sojoline.solar.view.activity.MeterActivity;
 import com.sojoline.solar.view.activity.MonitorActivity;
 import com.sojoline.solar.view.activity.PowermeterActivity;
 import com.sojoline.solar.view.activity.TransformerActivity;
@@ -106,6 +108,20 @@ public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.Vi
 				@Override
 				public void onClick(View v) {
 					PowermeterActivity.navigation(info.getElectricPowerMeterID());
+				}
+			});
+		}else if (device == DeviceListActivity.DEVICE_METER) {
+			final MeterInfo info = (MeterInfo) o;
+			if (TextUtils.isEmpty(info.getMeterName())) {
+				holder.tvName.setText(info.getMeterName());
+			} else {
+				holder.tvName.setText(info.getElectricMeterID());
+			}
+			holder.tvName.setText(info.getMeterName());
+			holder.tvName.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					MeterActivity.navigation(info.getElectricMeterID());
 				}
 			});
 		}else{

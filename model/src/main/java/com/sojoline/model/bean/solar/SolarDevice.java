@@ -6,8 +6,8 @@ import java.util.List;
 
 /**
  * <pre>
- *     @author : 李小勇
- *     date   : 2018/01/10
+ *     @author : zhaochenghu
+ *     date   : 2018/08/27
  *     desc   :
  *     version: 1.0
  * </pre>
@@ -62,7 +62,7 @@ public class SolarDevice {
 	private int totalTransformer;
 	private int totalEnvDetector ;
 	private int totalPowerMeter;
-	//private int totalMeter;
+	private int totalMeter;
 	private int transformerAlarmNum;
 	private int transformerFaultNum;
 	private int transformerRunningNum;
@@ -85,12 +85,51 @@ public class SolarDevice {
 	@SerializedName("powerMeterList")
 	private List<PowermeterInfo> powerMeterList;
    //电表
-//	private int meterAlarmNum;
-//	private int meterLineNum;
-//	private int meterRunningNum;
-//	@SerializedName("meterList")
-//	private List<PowermeterInfo> meterList;
+	private int meterAlarmNum;
+	private int meterLineNum;
+	private int meterRunningNum;
+	@SerializedName("meterList")
+	private List<MeterInfo> meterList;
 
+	public int getTotalMeter() {
+		return totalMeter;
+	}
+
+	public void setTotalMeter(int totalMeter) {
+		this.totalMeter = totalMeter;
+	}
+
+	public int getMeterAlarmNum() {
+		return meterAlarmNum;
+	}
+
+	public void setMeterAlarmNum(int meterAlarmNum) {
+		this.meterAlarmNum = meterAlarmNum;
+	}
+
+	public int getMeterLineNum() {
+		return meterLineNum;
+	}
+
+	public void setMeterLineNum(int meterLineNum) {
+		this.meterLineNum = meterLineNum;
+	}
+
+	public int getMeterRunningNum() {
+		return meterRunningNum;
+	}
+
+	public void setMeterRunningNum(int meterRunningNum) {
+		this.meterRunningNum = meterRunningNum;
+	}
+
+	public List<MeterInfo> getMeterList() {
+		return meterList;
+	}
+
+	public void setMeterList(List<MeterInfo> meterList) {
+		this.meterList = meterList;
+	}
 
 	public int getTotalPowerMeter() {
 		return totalPowerMeter;

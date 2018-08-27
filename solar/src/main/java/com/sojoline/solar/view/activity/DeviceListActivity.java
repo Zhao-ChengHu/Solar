@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.sojoline.base.view.BaseCompatActivity;
 import com.sojoline.model.bean.solar.CombinerInfo;
 import com.sojoline.model.bean.solar.InverterInfo;
+import com.sojoline.model.bean.solar.MeterInfo;
 import com.sojoline.model.bean.solar.PowermeterInfo;
 import com.sojoline.model.bean.solar.TransformerInfo;
 import com.sojoline.solar.R;
@@ -24,8 +25,8 @@ import butterknife.BindView;
 
 /**
  * <pre>
- *     @author : 李小勇
- *     date   : 2017/11/05
+ *     @author : zhaochenghu
+ *     date   : 2018/08/27
  *     desc   :
  *     version: 1.0
  * </pre>
@@ -43,6 +44,7 @@ public class DeviceListActivity extends BaseCompatActivity {
 	public static final int DEVICE_COMBINER = 0x2;
 	public static final int DEVICE_MONITOR = 0x3;
 	public static final int DEVICE_POWERMETER = 0x4;
+	public static final int DEVICE_METER = 0x5;
 
 	public static void navigation(int device, ArrayList<? extends Parcelable> object){
 		ARouter.getInstance().build("/solar/login/device_list")
@@ -80,6 +82,10 @@ public class DeviceListActivity extends BaseCompatActivity {
 		}else if(device == DEVICE_POWERMETER) {
 			initToolbarNav("多功能电力仪");
 			ArrayList<PowermeterInfo> list = (ArrayList<PowermeterInfo>) object;
+			adapter = new DeviceListAdapter(list, device);
+		}else if(device == DEVICE_METER) {
+			initToolbarNav("电表");
+			ArrayList<MeterInfo> list = (ArrayList<MeterInfo>) object;
 			adapter = new DeviceListAdapter(list, device);
 		}
 		recyclerView.setHasFixedSize(true);

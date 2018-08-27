@@ -12,6 +12,7 @@ import com.sojoline.base.view.BaseFragment;
 import com.sojoline.base.widget.DrawableCenterTextView;
 import com.sojoline.model.bean.solar.CombinerInfo;
 import com.sojoline.model.bean.solar.InverterInfo;
+import com.sojoline.model.bean.solar.MeterInfo;
 import com.sojoline.model.bean.solar.MonitorInfo;
 import com.sojoline.model.bean.solar.PowermeterInfo;
 import com.sojoline.model.bean.solar.SolarDevice;
@@ -32,8 +33,8 @@ import static com.sojoline.solar.R.id.tv_news_total;
 
 /**
  * <pre>
- *     @author : 李小勇
- *     time   : 2017/10/12
+ *     @author : zhaochenghu
+ *     time   : 2018/08/27
  *     desc   :
  *     version: 1.0
  * </pre>
@@ -50,6 +51,8 @@ public class SolarDeviceFragment extends BaseFragment implements SolarDeviceCont
 	LinearLayout   layTransformer;
 	@BindView(R2.id.ll_powermeter)
 	LinearLayout    layPowereter;
+	@BindView(R2.id.ll_wattmeter)
+	LinearLayout    layWattmeter;
 
 	@BindView(R2.id.tv_transformer_total)
 	TextView 				tvTransformerTotal;
@@ -96,12 +99,21 @@ public class SolarDeviceFragment extends BaseFragment implements SolarDeviceCont
 	@BindView(R2.id.tv_powermeter_off)
 	DrawableCenterTextView 	tvPowermeterOff;
 
+	@BindView(R2.id.tv_wattmeter_total)
+	TextView                tvWattmeterTotal;
+	@BindView(R2.id.tv_wattmeter_running)
+	DrawableCenterTextView  tvWattmeterRunning;
+	@BindView(R2.id.tv_wattmeter_warning)
+	DrawableCenterTextView  tvWattmeterWarning;
+	@BindView(R2.id.tv_wattmeter_off)
+	DrawableCenterTextView  tvWattmeterOff;
 	private SolarDevicePresenter presenter;
 	private ArrayList<TransformerInfo> transformers;
 	private ArrayList<InverterInfo> inverters;
 	private ArrayList<CombinerInfo> combiners;
 	private ArrayList<MonitorInfo> monitors;
 	private ArrayList<PowermeterInfo> powermeters;
+	private ArrayList<MeterInfo> meters;
 	public static SolarDeviceFragment newInstance() {
 		Bundle args = new Bundle();
 		SolarDeviceFragment fragment = new SolarDeviceFragment();
@@ -129,7 +141,7 @@ public class SolarDeviceFragment extends BaseFragment implements SolarDeviceCont
 		presenter.getSolarDevices(id);
 	}
 
-	@OnClick({R2.id.ll_transformer, R2.id.ll_inverter, R2.id.ll_combiner,R2.id.ll_monitors,R2.id.ll_powermeter})
+	@OnClick({R2.id.ll_transformer, R2.id.ll_inverter, R2.id.ll_combiner,R2.id.ll_monitors,R2.id.ll_powermeter,R2.id.ll_wattmeter})
 	public void onViewClicked(View view) {
 		if (view.getId() == R.id.ll_transformer) {
 			DeviceListActivity.navigation(DeviceListActivity.DEVICE_TRANSFORMER, transformers);
@@ -141,6 +153,8 @@ public class SolarDeviceFragment extends BaseFragment implements SolarDeviceCont
 			DeviceListActivity.navigation(DeviceListActivity.DEVICE_MONITOR,monitors);
 		}else if (view.getId() == R.id.ll_powermeter) {
 			DeviceListActivity.navigation(DeviceListActivity.DEVICE_POWERMETER, powermeters);
+		}else if (view.getId() == R.id.ll_wattmeter) {
+			DeviceListActivity.navigation(DeviceListActivity.DEVICE_METER, meters);
 		}
 	}
 
@@ -177,6 +191,7 @@ public class SolarDeviceFragment extends BaseFragment implements SolarDeviceCont
 			transformers = (ArrayList<TransformerInfo>) data.getTransformerList();
 			monitors = (ArrayList <MonitorInfo>) data.getMonitorList();
 			powermeters = (ArrayList <PowermeterInfo>) data.getPowerMeterList();
+			meters=(ArrayList<MeterInfo>) data.getMeterList();
 			if (data.getTotalCombiner() == 0) {
 				layCombiner.setVisibility(View.GONE);
 			} else {
@@ -216,6 +231,14 @@ public class SolarDeviceFragment extends BaseFragment implements SolarDeviceCont
 				tvPowermeterRunning.setText(data.getPowerMeterRunningNum() + "");
 				tvPowermeterWarning.setText(data.getPowerMeterAlarmNum() + "");
 				tvPowermeterTotal.setText("共" + data.getTotalPowerMeter() + "个");
+			}
+			if (data.getTotalMeter() == 0) {
+				layWattmeter.setVisibility(View.GONE);
+			} else {
+				tvWattmeterOff.setText(data.getMeterLineNum() + "");
+				tvWattmeterRunning.setText(data.getMeterRunningNum() + "");
+				tvWattmeterWarning.setText(data.getMeterAlarmNum() + "");
+				tvWattmeterTotal.setText("共" + data.getTotalMeter() + "个");
 			}
 		}
 	}
