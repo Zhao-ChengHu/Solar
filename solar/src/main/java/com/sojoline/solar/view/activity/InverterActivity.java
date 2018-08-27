@@ -227,7 +227,7 @@ public class InverterActivity extends BaseCompatActivity implements DeviceDataCo
 	public void success(Object o) {
 		InverterData data = (InverterData) o;
 		if (data != null) {
-			if (data.getProtocolId().equals("011")) {
+			if (!data.getRemark().equals("")) {
 				tvScrollview.setVisibility(View.GONE);
 				tvInvercode.setText(data.getInverterId());
 				tvTime.setText(data.getJoinTime());
