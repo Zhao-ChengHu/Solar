@@ -55,7 +55,7 @@ public class MeterData {
         private String DecFowardReactiveGElectric;
         private String DecFowardJElectric;
         private int intervals;
-        private int PosActElectric;
+        private float PosActElectric;
         private String MeterID;
         private Object VoltageB;
         private String id;
@@ -136,11 +136,11 @@ public class MeterData {
             this.intervals = intervals;
         }
 
-        public int getPosActElectric() {
+        public float getPosActElectric() {
             return PosActElectric;
         }
 
-        public void setPosActElectric(int PosActElectric) {
+        public void setPosActElectric(float PosActElectric) {
             this.PosActElectric = PosActElectric;
         }
 

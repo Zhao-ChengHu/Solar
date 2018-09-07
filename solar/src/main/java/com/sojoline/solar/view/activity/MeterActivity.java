@@ -145,8 +145,8 @@ public class MeterActivity extends BaseCompatActivity implements DeviceDataContr
 			//tvDirectRadiationInstant.setText(data.getDirectRadiationInstant()/1000 + "W/㎡");
 			tvDecFowardPElectric.setText(data.getDecFowardPElectric()+"kWh");
 			tvDecFowardFElectric.setText(data.getDecFowardFElectric()+"kWh");
-			tvPosActElectric.setText(data.getPosActElectric()+"kWh");
-			tvActivePower.setText(data.getActivePower()/1000+"kW");
+			tvPosActElectric.setText(data.getPosActElectric()/100+"kWh");
+			tvActivePower.setText(data.getActivePower()/10000+"kW");
 			tvDecFowardJElectric.setText(data.getDecFowardJElectric()+"kWh");
 			tvDecFowardGElectric.setText(data.getDecFowardGElectric()+"kWh");
 			tvDecBackwardFElectric.setText(data.getDecBackwardFElectric()+"kWh");
