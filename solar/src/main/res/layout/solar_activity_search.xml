@@ -61,7 +61,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:minWidth="45dp"
-            android:text="@string/cancel"
+            android:text="@string/search"
             android:textColor="@color/white"
             android:textSize="@dimen/ts_lel_two"/>
     </LinearLayout>

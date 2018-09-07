@@ -40,8 +40,8 @@ import rx.functions.Action1;
 
 /**
  * <pre>
- *     @author : 李小勇
- *     time   : 2017/10/11
+ *     @author : zhaochenghu
+ *     time   : 2018/09/07
  *     desc   : 搜索电站
  *     version: 1.0
  * </pre>
@@ -135,7 +135,7 @@ public class SearchActivity extends BaseCompatActivity implements CollectSolarCo
 				}
 			}
 		});
-	/*	etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+		etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 			@Override
 			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 				if (actionId == EditorInfo.IME_ACTION_SEARCH){
@@ -151,19 +151,34 @@ public class SearchActivity extends BaseCompatActivity implements CollectSolarCo
 				}
 				return false;
 			}
-		});*/
+		});
 
 	}
 
-	@OnClick({R2.id.iv_delete, R2.id.bt_cancel})
+	@OnClick({R2.id.bt_cancel})
+	public void onViewCancel(View view){
+		int i = view.getId();
+		if (i == R.id.bt_cancel) {
+			String s = etSearch.getText().toString();
+			if (TextUtils.isEmpty(s)) {
+				showToast("请输入电站名称");
+			} else {
+				searchStation(s);
+				//隐藏软键盘
+				KeyboardUtils.hideSoftInput(SearchActivity.this);
+			}
+		}
+	}
+
+	@OnClick({R2.id.iv_delete/*, R2.id.bt_cancel*/})
 	public void onViewClicked(View view) {
 		int i = view.getId();
 		if (i == R.id.iv_delete) {
 			etSearch.setText("");
 			etSearch.requestFocus();
-		} else if (i == R.id.bt_cancel) {
+		} /*else if (i == R.id.bt_cancel) {
 			finish();
-		}
+		}*/
 	}
 
 	@Override

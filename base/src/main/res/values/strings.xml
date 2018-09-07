@@ -5,4 +5,5 @@
     <string name="unknown">--</string>
     <string name="transition_search">transition_search</string>
     <string name="cancel">取消</string>
+    <string name="search">搜索</string>
 </resources>
