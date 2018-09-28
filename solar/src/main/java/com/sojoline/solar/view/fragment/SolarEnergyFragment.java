@@ -70,6 +70,10 @@ public class SolarEnergyFragment extends BaseFragment implements SolarEnergyCont
 	SegmentTabLayout topBar;
 	@BindView(R2.id.barChart)
 	BarChart barChart;
+	@BindView(R2.id.barChartmonth)
+	BarChart barChartmonth;
+	@BindView(R2.id.barChartyear)
+	BarChart barChartyear;
 	@BindView(R2.id.lineChart)
 	LineChart lineChart;
 	@BindView(R2.id.iv_left)
@@ -86,6 +90,8 @@ public class SolarEnergyFragment extends BaseFragment implements SolarEnergyCont
 	private SolarEnergyPresenter presenter;
 	private SolarEnergyRequest request;
 	private XAxis barXAxis;
+	private XAxis barXAxisMonth;
+	private XAxis barXAxisYear;
 	private XAxis lineXAxis;
 
 	public static final int DAY = 51;
@@ -200,6 +206,8 @@ public class SolarEnergyFragment extends BaseFragment implements SolarEnergyCont
 		});
 		initBarChart();
 		initLineChart();
+		initBarChartMonth();
+		initBarChartYear();
 	}
 
 	/**
@@ -233,20 +241,119 @@ public class SolarEnergyFragment extends BaseFragment implements SolarEnergyCont
 			@Override
 			public String getFormattedValue(float value, AxisBase axis) {
 //				DebugLog.log("BarChart x value:" + value);
-				return (int)value + "";
+				return (int)value + "日";
 			}
 		});
-
 		YAxis leftY = barChart.getAxisLeft();
 		leftY.setDrawGridLines(false);
 		leftY.setDrawAxisLine(true);
 		leftY.setTextColor(Color.BLACK);
 		leftY.setTextSize(11f);
 
+		leftY.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                return (int)value+"kwh";
+            }
+        });
 		YAxis rightY = barChart.getAxisRight();
 		rightY.setEnabled(false);
 
 		Legend legend = barChart.getLegend();
+		legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+		legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+		legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+		legend.setDrawInside(false);
+		legend.setForm(Legend.LegendForm.SQUARE);
+		legend.setFormSize(11f);
+
+	}
+	private void initBarChartMonth(){
+		Description description = barChartmonth.getDescription();
+		description.setEnabled(false);
+
+		barChartmonth.setNoDataText("没有数据");
+		barChartmonth.setScaleXEnabled(true);
+		barChartmonth.setScaleYEnabled(false);
+		barChartmonth.setExtraLeftOffset(ScreenUtils.dp2px(5));
+
+		barXAxisMonth = barChartmonth.getXAxis();
+		barXAxisMonth.setPosition(XAxis.XAxisPosition.BOTTOM);
+		barXAxisMonth.setTextColor(Color.BLACK);
+		barXAxisMonth.setTextSize(11f);
+		barXAxisMonth.setLabelCount(5);
+		barXAxisMonth.setDrawGridLines(false);
+		barXAxisMonth.setDrawAxisLine(true);
+		barXAxisMonth.setValueFormatter(new IAxisValueFormatter() {
+			@Override
+			public String getFormattedValue(float value, AxisBase axis) {
+//				DebugLog.log("BarChart x value:" + value);
+				return (int)value + "月";
+			}
+		});
+		YAxis leftY = barChartmonth.getAxisLeft();
+		leftY.setDrawGridLines(false);
+		leftY.setDrawAxisLine(true);
+		leftY.setTextColor(Color.BLACK);
+		leftY.setTextSize(11f);
+
+		leftY.setValueFormatter(new IAxisValueFormatter() {
+			@Override
+			public String getFormattedValue(float value, AxisBase axis) {
+				return (int)value+"kwh";
+			}
+		});
+		YAxis rightY = barChartmonth.getAxisRight();
+		rightY.setEnabled(false);
+
+		Legend legend = barChartmonth.getLegend();
+		legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+		legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+		legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+		legend.setDrawInside(false);
+		legend.setForm(Legend.LegendForm.SQUARE);
+		legend.setFormSize(11f);
+
+	}
+	private void initBarChartYear(){
+		Description description = barChartyear.getDescription();
+		description.setEnabled(false);
+
+		barChartyear.setNoDataText("没有数据");
+		barChartyear.setScaleXEnabled(true);
+		barChartyear.setScaleYEnabled(false);
+		barChartyear.setExtraLeftOffset(ScreenUtils.dp2px(5));
+
+		barXAxisYear = barChartyear.getXAxis();
+		barXAxisYear.setPosition(XAxis.XAxisPosition.BOTTOM);
+		barXAxisYear.setTextColor(Color.BLACK);
+		barXAxisYear.setTextSize(11f);
+		barXAxisYear.setLabelCount(5);
+		barXAxisYear.setDrawGridLines(false);
+		barXAxisYear.setDrawAxisLine(true);
+		barXAxisYear.setValueFormatter(new IAxisValueFormatter() {
+			@Override
+			public String getFormattedValue(float value, AxisBase axis) {
+//				DebugLog.log("BarChart x value:" + value);
+				return (int)value + "年";
+			}
+		});
+		YAxis leftY = barChartyear.getAxisLeft();
+		leftY.setDrawGridLines(false);
+		leftY.setDrawAxisLine(true);
+		leftY.setTextColor(Color.BLACK);
+		leftY.setTextSize(11f);
+
+		leftY.setValueFormatter(new IAxisValueFormatter() {
+			@Override
+			public String getFormattedValue(float value, AxisBase axis) {
+				return (int)value+"kwh";
+			}
+		});
+		YAxis rightY = barChartyear.getAxisRight();
+		rightY.setEnabled(false);
+
+		Legend legend = barChartyear.getLegend();
 		legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
 		legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
 		legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
@@ -279,7 +386,7 @@ public class SolarEnergyFragment extends BaseFragment implements SolarEnergyCont
 			@Override
 			public String getFormattedValue(float value, AxisBase axis) {
 //				DebugLog.log("LineChart x value:" + value);
-				return (int)value + "";
+				return (int)value + "h";
 			}
 		});
 
@@ -289,6 +396,12 @@ public class SolarEnergyFragment extends BaseFragment implements SolarEnergyCont
 		leftAxis.setDrawGridLines(false);
 		leftAxis.setDrawZeroLine(false);
 
+		leftAxis.setValueFormatter(new IAxisValueFormatter() {
+			@Override
+			public String getFormattedValue(float value, AxisBase axis) {
+				return (int) value + "kw";
+			}
+		});
 		YAxis rightAxis = lineChart.getAxisRight();
 		rightAxis.setEnabled(false);
 
@@ -584,6 +697,8 @@ public class SolarEnergyFragment extends BaseFragment implements SolarEnergyCont
 			//图表设置数据
 			lineChart.setVisibility(View.VISIBLE);
 			barChart.setVisibility(View.GONE);
+			barChartmonth.setVisibility(View.GONE);
+			barChartyear.setVisibility(View.GONE);
 			lineChart.clear();
 			LineDataSet set = new LineDataSet(entries, "发电曲线");
 			set.setDrawValues(false);
@@ -604,7 +719,7 @@ public class SolarEnergyFragment extends BaseFragment implements SolarEnergyCont
 			dataSets.add(set);
 			LineData data = new LineData(dataSets);
 			lineChart.setData(data);
-		}else {
+		}else if (current == MONTH){
 			//其他发电量采用柱状图
 			List<BarEntry> entries = new ArrayList<>();
 			if (list != null && list.size() > 0) {
@@ -625,7 +740,8 @@ public class SolarEnergyFragment extends BaseFragment implements SolarEnergyCont
 
 			lineChart.setVisibility(View.GONE);
 			barChart.setVisibility(View.VISIBLE);
-
+			barChartmonth.setVisibility(View.GONE);
+			barChartyear.setVisibility(View.GONE);
 			barChart.clear();
 			BarDataSet set = new BarDataSet(entries, "发电量/kWh");
 			set.setDrawIcons(false);
@@ -633,17 +749,97 @@ public class SolarEnergyFragment extends BaseFragment implements SolarEnergyCont
 			ArrayList<IBarDataSet> sets = new ArrayList<>();
 			sets.add(set);
 			BarData data = new BarData(sets);
-			if (entries.size() < 6){
+			if (entries.size() < 6) {
 				barXAxis.setLabelCount(entries.size());
 				barXAxis.setSpaceMin(0.5f);
 				barXAxis.setSpaceMax(0.5f);
 				data.setBarWidth(0.45f);
-			}else {
+			} else {
 				barXAxis.setLabelCount(6);
 				data.setBarWidth(0.8f);
 			}
 
 			barChart.setData(data);
+		} else if (current == YEAR) {
+			List<BarEntry> entries = new ArrayList<>();
+			if (list != null && list.size() > 0) {
+				if (list.size() > 1) {
+					Collections.sort(list);
+				}
+
+				for (DateElectric electric : list) {
+					total += electric.getElectric();
+					entries.add(new BarEntry(electric.getNum(), electric.getElectric()));
+				}
+			} else {
+				//没有数据时填充0
+				for (int i = 0; i < 12; i++) {
+					entries.add(new BarEntry(i, 0));
+				}
+			}
+
+			lineChart.setVisibility(View.GONE);
+			barChart.setVisibility(View.GONE);
+			barChartmonth.setVisibility(View.VISIBLE);
+			barChartyear.setVisibility(View.GONE);
+			barChartmonth.clear();
+			BarDataSet set = new BarDataSet(entries, "发电量/kWh");
+			set.setDrawIcons(false);
+			set.setColors(ColorTemplate.MATERIAL_COLORS);
+			ArrayList<IBarDataSet> sets = new ArrayList<>();
+			sets.add(set);
+			BarData data = new BarData(sets);
+			if (entries.size() < 6) {
+				barXAxisMonth.setLabelCount(entries.size());
+				barXAxisMonth.setSpaceMin(0.5f);
+				barXAxisMonth.setSpaceMax(0.5f);
+				data.setBarWidth(0.45f);
+			} else {
+				barXAxisMonth.setLabelCount(6);
+				data.setBarWidth(0.8f);
+			}
+
+			barChartmonth.setData(data);
+		} else if (current == SUM) {
+			List<BarEntry> entries = new ArrayList<>();
+			if (list != null && list.size() > 0) {
+				if (list.size() > 1) {
+					Collections.sort(list);
+				}
+
+				for (DateElectric electric : list) {
+					total += electric.getElectric();
+					entries.add(new BarEntry(electric.getNum(), electric.getElectric()));
+				}
+			} else {
+				//没有数据时填充0
+				for (int i = 0; i < 12; i++) {
+					entries.add(new BarEntry(i, 0));
+				}
+			}
+
+			lineChart.setVisibility(View.GONE);
+			barChart.setVisibility(View.GONE);
+			barChartmonth.setVisibility(View.GONE);
+			barChartyear.setVisibility(View.VISIBLE);
+			barChartyear.clear();
+			BarDataSet set = new BarDataSet(entries, "发电量/kWh");
+			set.setDrawIcons(false);
+			set.setColors(ColorTemplate.MATERIAL_COLORS);
+			ArrayList<IBarDataSet> sets = new ArrayList<>();
+			sets.add(set);
+			BarData data = new BarData(sets);
+			if (entries.size() < 6) {
+				barXAxisYear.setLabelCount(entries.size());
+				barXAxisYear.setSpaceMin(0.5f);
+				barXAxisYear.setSpaceMax(0.5f);
+				data.setBarWidth(0.45f);
+			} else {
+				barXAxisYear.setLabelCount(6);
+				data.setBarWidth(0.8f);
+			}
+
+			barChartyear.setData(data);
 		}
 		tvTotal.setText(total + " kWh");
 	}

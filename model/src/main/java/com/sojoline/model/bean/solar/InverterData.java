@@ -431,7 +431,7 @@ public class InverterData {
 		private String DcCurrentThree;
 		private String DcVoltageTwo;
 		private float PV2InputA;
-		private String PV8InputA;
+		private float PV8InputA;
 		private float VoltageB;
 		private float VoltageC;
 		private float VoltageA;
@@ -455,11 +455,11 @@ public class InverterData {
 		private String ShutdownTime;
 		private String BusVoltage;
 		private float PV3InputA;
-		private String PV11InputA;
+		private float PV11InputA;
 		private float PV6InputV;
-		private String PV10InputA;
+		private float PV10InputA;
 		private String PV12InputA;
-		private String PV9InputA;
+		private float PV9InputA;
 		private String PV13InputA;
 		private float PV6InputA;
 		private float PV3InputV;
@@ -637,11 +637,11 @@ public class InverterData {
 			this.PV2InputA = PV2InputA;
 		}
 
-		public String getPV8InputA() {
+		public float getPV8InputA() {
 			return PV8InputA;
 		}
 
-		public void setPV8InputA(String PV8InputA) {
+		public void setPV8InputA(float PV8InputA) {
 			this.PV8InputA = PV8InputA;
 		}
 
@@ -840,10 +840,10 @@ public class InverterData {
 		}
 
 
-		public String getPV11InputA() {
+		public float getPV11InputA() {
 			return PV11InputA;
 		}
-		public void setPV11InputA(String PV11InputA) {
+		public void setPV11InputA(float PV11InputA) {
 			this.PV11InputA = PV11InputA;
 		}
 		public float getPV6InputV() {
@@ -854,11 +854,11 @@ public class InverterData {
 			this.PV6InputV = PV6InputV;
 		}
 
-		public String getPV10InputA() {
+		public float getPV10InputA() {
 			return PV10InputA;
 		}
 
-		public void setPV10InputA(String PV10InputA) {
+		public void setPV10InputA(float PV10InputA) {
 			this.PV10InputA = PV10InputA;
 		}
 
@@ -871,11 +871,11 @@ public class InverterData {
 			this.PV12InputA = PV12InputA;
 		}
 
-		public String getPV9InputA() {
+		public float getPV9InputA() {
 			return PV9InputA;
 		}
 
-		public void setPV9InputA(String PV9InputA) {
+		public void setPV9InputA(float PV9InputA) {
 			this.PV9InputA = PV9InputA;
 		}
 

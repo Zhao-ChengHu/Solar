@@ -12,12 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.sojoline.base.util.AppUtils;
 import com.sojoline.base.view.BaseFragment;
@@ -174,13 +176,24 @@ public class SolarStationFragment extends BaseFragment implements SolarDataContr
 		xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 		xAxis.setDrawAxisLine(true);
 		xAxis.setDrawGridLines(false);
-
+		xAxis.setValueFormatter(new IAxisValueFormatter() {
+			@Override
+			public String getFormattedValue(float value, AxisBase axis) {
+//				DebugLog.log("LineChart x value:" + value);
+				return (int)value + "h";
+			}
+		});
 		YAxis leftAxis = lineChart.getAxisLeft();
 		leftAxis.setTextColor(Color.BLACK);
 		leftAxis.setDrawAxisLine(true);
 		leftAxis.setDrawGridLines(false);
 		leftAxis.setDrawZeroLine(false);
-
+		leftAxis.setValueFormatter(new IAxisValueFormatter() {
+			@Override
+			public String getFormattedValue(float value, AxisBase axis) {
+				return (int) value + "kw";
+			}
+		});
 		YAxis rightAxis = lineChart.getAxisRight();
 		rightAxis.setEnabled(false);
 

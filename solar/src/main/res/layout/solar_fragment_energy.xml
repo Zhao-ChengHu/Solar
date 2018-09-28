@@ -75,6 +75,20 @@
         android:layout_height="300dp"
         android:visibility="gone">
     </com.github.mikephil.charting.charts.BarChart>
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChartmonth"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:visibility="gone">
+    </com.github.mikephil.charting.charts.BarChart>
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChartyear"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:visibility="gone">
+    </com.github.mikephil.charting.charts.BarChart>
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChart"
         android:layout_marginTop="20dp"

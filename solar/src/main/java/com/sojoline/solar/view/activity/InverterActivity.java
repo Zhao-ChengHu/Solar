@@ -346,14 +346,14 @@ public class InverterActivity extends BaseCompatActivity implements DeviceDataCo
 				tvInverterState.setText(data.getInverterState());//运行状态
 
 				tvInverterTem.setText(data.getInverterTem()/10+"℃");
-				tvInverterDayElec.setText(data.getInverterDayElec()/1000+"kWh");
+				tvInverterDayElec.setText(data.getInverterDayElec()/100+"kWh");
 				tvInverterMonthElec.setText(data.getInverterMonthElec()/100+"kWh");
 				tvVoltageA.setText(data.getVoltageA()/10+"V");
 				tvVoltageB.setText(data.getVoltageB()/10+"V");
 				tvVoltageC.setText(data.getVoltageC()/10+"V");
-				tvCurrentA1.setText(data.getCurrentA()+"A");
-				tvCurrentB1.setText(data.getCurrentB()+"A");
-				tvCurrentC1.setText(data.getCurrentC()+"A");
+				tvCurrentA1.setText(data.getCurrentA()/10+"A");
+				tvCurrentB1.setText(data.getCurrentB()/10+"A");
+				tvCurrentC1.setText(data.getCurrentC()/10+"A");
 				tvDcVoltageOne.setText(data.getDcVoltageOne()+"V");
 				tvDcCurrentOne.setText(data.getDcCurrentOne()+"A");
 				tvDcCurrentTwo.setText(data.getDcCurrentTwo()+"A");
@@ -364,12 +364,12 @@ public class InverterActivity extends BaseCompatActivity implements DeviceDataCo
 				tvNegativeTurnGroundVoltage.setText(data.getNegativeTurnGroundVoltage()+"V");
 				tvBusVoltage.setText(data.getBusVoltage()+"V");
 				tvTotalOperatingTime.setText(data.getTotalOperatingTime()+"h");
-				tvPV1InputA.setText(data.getPV1InputA()+"A");
-				tvPV2InputA.setText(data.getPV2InputA()+"A");
-				tvPV3InputA.setText(data.getPV3InputA()+"A");
-				tvPV4InputA.setText(data.getPV4InputA()+"A");
-				tvPV5InputA.setText(data.getPV5InputA()+"A");
-				tvPV6InputA.setText(data.getPV6InputA()+"A");
+				tvPV1InputA.setText(data.getPV1InputA()/10+"A");
+				tvPV2InputA.setText(data.getPV2InputA()/10+"A");
+				tvPV3InputA.setText(data.getPV3InputA()/10+"A");
+				tvPV4InputA.setText(data.getPV4InputA()/10+"A");
+				tvPV5InputA.setText(data.getPV5InputA()/10+"A");
+				tvPV6InputA.setText(data.getPV6InputA()/10+"A");
 				tvPV7InputA.setText(data.getPV7InputA()+"A");
 				tvPV8InputA.setText(data.getPV8InputA()+"A");
 				tvPV9InputA.setText(data.getPV9InputA()+"A");
