@@ -399,7 +399,7 @@ public class SolarEnergyFragment extends BaseFragment implements SolarEnergyCont
 		leftAxis.setValueFormatter(new IAxisValueFormatter() {
 			@Override
 			public String getFormattedValue(float value, AxisBase axis) {
-				return (int) value + "kw";
+				return (int) value + "kwh";
 			}
 		});
 		YAxis rightAxis = lineChart.getAxisRight();

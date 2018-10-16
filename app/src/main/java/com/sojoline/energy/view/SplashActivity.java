@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -166,6 +167,9 @@ public class SplashActivity extends BaseCompatActivity {
 			}
 		}else if (module == AppConstants.MODULE_SALE){
 			//售电
+			Toast.makeText(SplashActivity.this,"售电系统研发中,请退出登陆重新选择",Toast.LENGTH_LONG).show();
+			SettingActivity.navigation();
+//			SolarMimeFragment.newInstance();
 		}else if (module == AppConstants.MODULE_MONITOR){
 			//能耗监测
 			if (TextUtils.isEmpty(id)){
